@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JumlaHub - الملف الشخصي</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container header-content">
+      <div class="nav-left">
+        <div class="logo">JumlaHub</div>
+        <nav class="nav-links">
+          <a href="index.html">الرئيسية</a>
+          <a href="index.html#products">المنتجات</a>
+          <a href="orders.html">طلباتي</a>
+        </nav>
+      </div>
+      <div class="search">
+        <input type="text" placeholder="ابحث عن منتج أو فئة...">
+        <i class="fas fa-search"></i>
+      </div>
+      <div class="nav-buttons">
+        <a href="profile.html" class="btn btn-ghost">
+          <i class="fas fa-sign-in-alt"></i>
+          تسجيل دخول
+        </a>
+        <a href="profile.html" class="btn btn-secondary">
+          <i class="fas fa-user-plus"></i>
+          إنشاء حساب
+        </a>
+        <a href="orders.html" class="btn btn-primary">
+          <i class="fas fa-shopping-bag"></i>
+          طلباتي
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container profile-page">
+    <div class="profile-hero">
+      <div>
+        <span class="eyebrow"><i class="fas fa-user-shield"></i> لوحة بيانات الحساب</span>
+        <h2 style="margin-top: 6px;">أهلاً أحمد، راجع معلومات حسابك وحدث بياناتك بسهولة.</h2>
+        <p class="muted" style="margin-top: 4px;">تحكم في بياناتك، الأمان، والجلسات من مكان واحد.</p>
+      </div>
+      <div class="badge"><i class="fas fa-certificate"></i> حساب تاجر فعّال</div>
+    </div>
+
+    <div class="summary-cards">
+      <div class="summary-card">
+        <div class="label"><i class="fas fa-receipt"></i> إجمالي الطلبات</div>
+        <div class="value">32 طلب</div>
+        <div class="pill"><i class="fas fa-check-circle"></i> آخر طلب: أمس</div>
+      </div>
+      <div class="summary-card">
+        <div class="label"><i class="fas fa-box-open"></i> قيد التجهيز</div>
+        <div class="value">4 طلبات</div>
+        <div class="meta-line">متوسط الشحن: 48 ساعة</div>
+      </div>
+      <div class="summary-card">
+        <div class="label"><i class="fas fa-circle-check"></i> مكتملة</div>
+        <div class="value">24 طلب</div>
+        <div class="meta-line">رضا العملاء: 4.8 / 5</div>
+      </div>
+      <div class="summary-card">
+        <div class="label"><i class="fas fa-wallet"></i> الرصيد المتاح</div>
+        <div class="value">1,850 ر.س</div>
+        <div class="meta-line">قابل للسحب فوراً</div>
+      </div>
+    </div>
+
+    <div class="profile-grid">
+      <div class="card">
+        <div class="profile-header" style="margin-bottom: 12px;">
+          <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=800&q=80" alt="صورة الحساب" class="avatar">
+          <div class="profile-info">
+            <span class="eyebrow" style="margin-bottom: 6px;"><i class="fas fa-building"></i> حساب تاجر</span>
+            <h2>أحمد التميمي</h2>
+            <p class="muted"><i class="fas fa-envelope"></i> ahmed@example.com</p>
+            <div class="profile-actions">
+              <span class="badge"><i class="fas fa-check"></i> موثق</span>
+              <button class="btn btn-secondary" id="refresh-profile"><i class="fas fa-sync"></i> تحديث البيانات</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="edit-form">
+          <h3 style="margin-bottom: 14px; text-align: center;">
+            <i class="fas fa-user-edit"></i> تعديل بيانات الحساب
+          </h3>
+          
+          <div class="form-group">
+            <label class="form-label">
+              <i class="fas fa-user"></i> الاسم الكامل
+            </label>
+            <input type="text" class="form-input" id="full-name" value="أحمد التميمي">
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">
+              <i class="fas fa-envelope"></i> البريد الإلكتروني
+            </label>
+            <input type="email" class="form-input" id="email" value="ahmed@example.com">
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">
+              <i class="fas fa-lock"></i> كلمة المرور الجديدة
+            </label>
+            <input type="password" class="form-input" id="new-password" placeholder="اكتب كلمة مرور قوية">
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">
+              <i class="fas fa-lock"></i> تأكيد كلمة المرور
+            </label>
+            <input type="password" class="form-input" id="confirm-password" placeholder="أعد كتابة كلمة المرور">
+          </div>
+          
+          <button class="btn btn-primary" id="save-profile" style="width: 100%; justify-content: center;">
+            <i class="fas fa-save"></i>
+            حفظ التغييرات
+          </button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 style="margin-bottom: 12px;"><i class="fas fa-shield-alt"></i> إعدادات الأمان</h3>
+        <div class="list">
+          <div class="list-item">
+            <i class="fas fa-mobile-alt"></i>
+            <div>
+              <div><strong>تفعيل التحقق بخطوتين</strong></div>
+              <div class="meta-line">أضف طبقة حماية عبر رسالة نصية أو تطبيق مصادقة.</div>
+            </div>
+            <span class="pill" style="margin-inline-start:auto;"><i class="fas fa-toggle-on"></i> مفعّل</span>
+          </div>
+          <div class="list-item">
+            <i class="fas fa-key"></i>
+            <div>
+              <div><strong>الجلسات النشطة</strong></div>
+              <div class="meta-line">3 أجهزة متصلة حالياً.</div>
+            </div>
+            <button class="btn btn-secondary" id="logout-all"><i class="fas fa-sign-out-alt"></i> تسجيل خروج الكل</button>
+          </div>
+          <div class="list-item">
+            <i class="fas fa-bell"></i>
+            <div>
+              <div><strong>إشعارات الطلبات</strong></div>
+              <div class="meta-line">تنبيهات فورية للحالات الجديدة.</div>
+            </div>
+            <span class="badge">بريد + تطبيق</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 style="margin-bottom: 12px;"><i class="fas fa-clock-rotate-left"></i> سجل النشاط</h3>
+        <div class="list">
+          <div class="list-item">
+            <i class="fas fa-check-circle"></i>
+            <div>
+              <div><strong>تم شحن طلب #3021</strong></div>
+              <div class="meta-line">منذ 3 ساعات</div>
+            </div>
+          </div>
+          <div class="list-item">
+            <i class="fas fa-pen"></i>
+            <div>
+              <div><strong>تم تحديث البريد الإلكتروني</strong></div>
+              <div class="meta-line">أمس</div>
+            </div>
+          </div>
+          <div class="list-item">
+            <i class="fas fa-shield-check"></i>
+            <div>
+              <div><strong>تم تفعيل التحقق بخطوتين</strong></div>
+              <div class="meta-line">منذ 3 أيام</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div>© 2025 JumlaHub. جميع الحقوق محفوظة.</div>
+      <div class="links">
+        <a href="#">سياسة الخصوصية</a>
+        <a href="#">شروط الاستخدام</a>
+        <a href="#">الشحن والإرجاع</a>
+        <a href="#">الدعم الفني</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const saveBtn = document.querySelector('#save-profile');
+    const logoutAllBtn = document.querySelector('#logout-all');
+    const refreshBtn = document.querySelector('#refresh-profile');
+
+    function showToast(message, gradient) {
+      const toast = document.createElement('div');
+      toast.className = 'notification';
+      toast.innerHTML = `
+        <i class="fas fa-info-circle"></i>
+        <span>${message}</span>
+      `;
+      toast.style.cssText = `
+        position: fixed;
+        top: 96px;
+        right: 16px;
+        padding: 14px 18px;
+        border-radius: 14px;
+        box-shadow: 0 18px 40px rgba(0,0,0,0.16);
+        z-index: 10000;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        animation: slideIn 0.4s ease-out;
+        background: ${gradient};
+      `;
+      document.body.appendChild(toast);
+      setTimeout(() => {
+        toast.style.animation = 'slideOut 0.4s ease-out';
+        setTimeout(() => toast.remove(), 380);
+      }, 2600);
+    }
+
+    saveBtn.addEventListener('click', () => {
+      showToast('تم حفظ بيانات الحساب بنجاح.', 'linear-gradient(135deg, #16a34a, #0f9f6e)');
+    });
+
+    refreshBtn.addEventListener('click', () => {
+      showToast('تم تحديث المعلومات من الخادم.', 'linear-gradient(135deg, var(--primary), var(--primary-strong))');
+    });
+
+    logoutAllBtn.addEventListener('click', () => {
+      if (confirm('تأكيد تسجيل الخروج من جميع الأجهزة؟')) {
+        showToast('تم تسجيل الخروج من كل الجلسات النشطة.', 'linear-gradient(135deg, #f97316, #ea580c)');
+      }
+    });
+
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes slideIn { from { transform: translateX(120%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+      @keyframes slideOut { from { transform: translateX(0); opacity: 1; } to { transform: translateX(120%); opacity: 0; } }
+    `;
+    document.head.appendChild(style);
+  </script>
+</body>
+</html>
