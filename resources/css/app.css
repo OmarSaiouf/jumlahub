@@ -109,10 +109,11 @@ body::before {
     left: 0;
     right: 0;
     z-index: 1000;
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.6);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(226, 232, 240, 0.8);
-    box-shadow: 0 10px 40px rgba(15, 118, 110, 0.06);
+    box-shadow: 0 10px 40px rgba(15, 118, 110, 0.1);
+    border-radius: 10px;
     padding: 10px 0;
 }
 
@@ -181,21 +182,16 @@ body::before {
 }
 
 .logo {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    gap: 12px;
-    font-size: 22px;
-    font-weight: 700;
     color: var(--text);
+    text-decoration: none;
 }
 
-.logo::before {
-    content: "";
-    width: 42px;
-    height: 42px;
-    border-radius: 14px;
-    background: linear-gradient(135deg, var(--primary), var(--primary-strong));
-    box-shadow: 0 10px 25px rgba(13, 148, 136, 0.25);
+.logo-img {
+    width: 84px;
+    height: auto;
+    display: block;
 }
 
 .nav-buttons {
@@ -448,8 +444,8 @@ body::before {
 
 .category-icon {
     position: relative;
-    width: 68px;
-    height: 68px;
+    width: 82px;
+    height: 82px;
     margin: 0 auto 10px;
     border-radius: 16px;
     display: grid;
@@ -478,8 +474,8 @@ body::before {
 
 .product-image {
     width: 100%;
-    height: 190px;
-    object-fit: cover;
+    height: 195px;
+    object-fit: contain;
     border-radius: var(--radius) var(--radius) 0 0;
 }
 
@@ -971,7 +967,7 @@ body::before {
 }
 
 .auth-aside .logo {
-    font-size: 20px;
+    justify-content: center;
 }
 
 .auth-aside h2 {

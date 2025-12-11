@@ -6,6 +6,7 @@ use App\Core\Models\City;
 use App\Core\Models\Country;
 use App\Core\Models\Currency;
 use App\Core\Models\Language;
+use App\Core\Traits\FilterManager;
 use App\Modules\Orders\Models\Order;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -16,7 +17,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Product extends Model
 {
     use HasFactory;
-    use HasUuids;
+    use HasUuids, FilterManager;
 
     protected $keyType = 'string';
     public $incrementing = false;
@@ -36,6 +37,27 @@ class Product extends Model
         'country_id',
         'city_id',
         'currency_id',
+    ];
+
+    protected array $filterable = [
+        'name',
+        'description',
+        'price',
+        'unit',
+        'quantity',
+        'quantity_sold',
+        'discount',
+        'is_quantity_finished',
+        'category_id',
+        'language_id',
+        'country_id',
+        'city_id',
+        'currency_id',
+    ];
+
+    protected array $searchable = [
+        'name',
+        'description',
     ];
 
     protected $casts = [

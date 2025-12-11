@@ -3,6 +3,7 @@
 namespace App\Modules\Products\Models;
 
 use App\Core\Models\Language;
+use App\Core\Traits\FilterManager;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -11,6 +12,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Category extends Model
 {
     use HasFactory;
+    use FilterManager;
 
     protected $fillable = [
         'name',
@@ -19,6 +21,17 @@ class Category extends Model
         'description',
         'image',
     ];
+    protected array $filterable = [
+        'name',
+        'parent_id',
+        'language_id',
+        'description',
+    ];
+
+    protected array $searchable = [
+        'name',
+    ];
+
 
     public function parent(): BelongsTo
     {

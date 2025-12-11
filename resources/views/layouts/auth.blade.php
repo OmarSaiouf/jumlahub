@@ -10,7 +10,9 @@
 <body class="auth-page">
     <div class="auth-wrapper">
         <aside class="auth-aside">
-            <div class="logo">JumlaHub</div>
+            <div class="logo" aria-label="{{ config('app.name', 'JumlaHub') }}">
+                <img class="logo-img" src="{{ asset('images/logo.png') }}" alt="{{ config('app.name', 'JumlaHub') }} logo" loading="lazy">
+            </div>
             <div class="chip">شبكة موردين موثوقة</div>
 
             <h2>ادخل إلى لوحة التحكم وابدأ الشراء بالجملة</h2>

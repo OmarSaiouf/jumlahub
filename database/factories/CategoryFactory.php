@@ -20,7 +20,7 @@ class CategoryFactory extends Factory
             'parent_id' => null,
             'language_id' => Language::factory(),
             'description' => fake()->sentence(8),
-            'image' => fake()->imageUrl(640, 480, 'business', true),
+            // 'image' => fake()->imageUrl(640, 480, 'business', true),
         ];
     }
 }
