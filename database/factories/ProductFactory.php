@@ -34,7 +34,7 @@ class ProductFactory extends Factory
             'is_quantity_finished' => $quantitySold >= $quantity,
             'category_id' => Category::factory(),
             'language_id' => Language::factory(),
-            'image' => fake()->imageUrl(640, 480, 'technics', true),
+            // 'image' => fake()->imageUrl(640, 480, 'technics', true),
             'country_id' => $countryFactory,
             'city_id' => City::factory()->for($countryFactory),
             'currency_id' => Currency::factory(),

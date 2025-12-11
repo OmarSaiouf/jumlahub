@@ -6,7 +6,7 @@ use App\Modules\Products\Models\Category;
 
 class CategoryService
 {
-    public function all(array|null $filters, int $limit = 30, int $offset = 0)
+    public function all(array|null $filters = null, int $limit = 30, int $offset = 0)
     {
         $query = Category::query();
         if ($filters != null) {

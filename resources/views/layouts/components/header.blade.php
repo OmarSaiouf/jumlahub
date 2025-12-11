@@ -3,12 +3,16 @@
 <header class="header">
     <div class="container header-content">
         <div class="nav-left">
-            <a href="{{ url('/') }}" class="logo">JumlaHub</a>
+            <a href="{{ url('/') }}" class="logo" aria-label="{{ config('app.name', 'JumlaHub') }}">
+                <img class="logo-img" src="{{ asset('images/logo.png') }}" alt="{{ config('app.name', 'JumlaHub') }} logo" loading="lazy">
+            </a>
             <nav class="nav-links">
                 <a href="{{ url('/') }}" class="{{ request()->is('/') ? 'active' : '' }}">الرئيسية</a>
                 <a href="{{ url('/#categories') }}">الفئات</a>
                 <a href="{{ url('/#products') }}">المنتجات</a>
-                <a href="{{ url('/orders') }}" class="{{ request()->is('orders*') ? 'active' : '' }}">الطلبات</a>
+                @auth
+                    <a href="{{ url('/orders') }}" class="{{ request()->is('orders*') ? 'active' : '' }}">الطلبات</a>
+                @endauth
             </nav>
         </div>
 
@@ -45,10 +49,6 @@
                             حساب جديد
                         </a>
                     @endif
-                    <a href="{{ url('/orders') }}" class="btn btn-primary">
-                        <i class="fas fa-shopping-bag"></i>
-                        الطلبات
-                    </a>
                 @endauth
             </div>
         @endif
