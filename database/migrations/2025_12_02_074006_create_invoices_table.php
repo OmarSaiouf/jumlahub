@@ -18,7 +18,7 @@ return new class extends Migration {
             $table->string('invoice_number');
             $table->decimal('amount', 10, 2);
             $table->foreignId('currency_id')->constrained();
-            $table->enum('status', InvoiceStatus::getAllKeyValues())->default(InvoiceStatus::UNPAID->getValue());
+            $table->enum('status', InvoiceStatus::values())->default(InvoiceStatus::UNPAID->getValue());
             $table->date('due_date')->nullable();
             $table->date('issued_at')->nullable();
             $table->json('metadata')->nullable();

@@ -4,11 +4,11 @@ namespace App\Core\Enums;
 
 enum OrderStatus: string
 {
-    case PENDING = 'pending';
     case PROCESSING = 'processing';
-    case COMPLETED = 'completed';
+    case PENDING = 'pending';
     case CANCELLED = 'cancelled';
     case REFUNDED = 'refunded';
+    case COMPLETED = 'completed';
 
 
 

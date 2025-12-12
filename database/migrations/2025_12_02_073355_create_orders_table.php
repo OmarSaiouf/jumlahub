@@ -18,7 +18,7 @@ return new class extends Migration {
             $table->foreignId('payment_provider_id')->constrained();
             $table->decimal('amount', 10, 2);
             $table->integer('quantity')->default(1);
-            $table->enum('status', OrderStatus::getAllKeyValues())->default(OrderStatus::PENDING->getValue());
+            $table->enum('status', OrderStatus::values())->default(OrderStatus::PENDING->getValue());
             $table->string('transaction_id')->nullable();
             $table->timestamps();
         });

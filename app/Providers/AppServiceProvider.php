@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+
+use App\Core\Services\PaymentProviderService;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\ServiceProvider;
 
@@ -16,6 +18,8 @@ class AppServiceProvider extends ServiceProvider
             $this->app->register(\Laravel\Telescope\TelescopeServiceProvider::class);
             $this->app->register(TelescopeServiceProvider::class);
         }
+
+        $this->app->singleton('payment.provider.service', PaymentProviderService::class);
     }
 
     /**
