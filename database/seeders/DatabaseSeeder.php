@@ -34,7 +34,7 @@ class DatabaseSeeder extends Seeder
 
         $languages = collect([
             ['name' => 'English', 'code' => 'en'],
-            ['name' => 'العربية', 'code' => 'ar'],
+            ['name' => 'Arabic', 'code' => 'ar'],
         ])->mapWithKeys(fn(array $language) => [
                 $language['code'] => Language::updateOrCreate(
                     ['code' => $language['code']],
@@ -112,7 +112,7 @@ class DatabaseSeeder extends Seeder
                 [
                     'description' => $category['description'],
                     'language_id' => $languages['en']->id,
-                    'image' => 'https://picsum.photos/seed/' . Str::slug($category['name']) . '/640/480',
+                    // 'image' => 'https://picsum.photos/seed/' . Str::slug($category['name']) . '/640/480',
                 ],
             ));
 
@@ -161,6 +161,7 @@ class DatabaseSeeder extends Seeder
             ->create([
                 'name' => 'Admin User',
                 'email' => 'admin@example.com',
+                'image' => null,
             ]);
 
         $users = User::factory()
@@ -174,6 +175,7 @@ class DatabaseSeeder extends Seeder
                     'currency_id' => $currencies->values()->random()->id,
                     'country_id' => $country->id,
                     'city_id' => $city->id,
+                    'image' => null,
                 ];
             })
             ->create();

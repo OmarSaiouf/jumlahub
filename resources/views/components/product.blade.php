@@ -25,15 +25,17 @@
         </div>
 
         <div class="stock-stats">
-            <span><i class="fas fa-warehouse"></i> حد أدنى للطلب: 100 قطعة</span>
+            <span><i class="fas fa-warehouse"></i> حد أدنى للطلب: 1 قطعة</span>
             <span><i class="fas fa-truck"></i> تسليم خلال 5-7 أيام</span>
         </div>
 
         <div class="hero-actions" style="margin-top: 12px;">
-            <a href="{{ url('/orders') }}" class="btn btn-primary">
+
+            <button type="button" class="btn btn-primary" data-modal-open="{{ 'create-order-' . $product->id }}">
                 <i class="fas fa-cart-plus"></i>
-                اطلب الآن
-            </a>
+                إنشاء طلب جملة
+            </button>
+
             @if (Route::has('login'))
                 <a href="{{ route('login') }}" class="btn btn-ghost">
                     <i class="fas fa-eye"></i>

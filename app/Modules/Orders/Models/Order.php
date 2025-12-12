@@ -2,7 +2,7 @@
 
 namespace App\Modules\Orders\Models;
 
-use App\Core\Enums\OrderStatus;
+
 use App\Core\Models\PaymentProvider;
 use App\Modules\Payments\Models\Payment;
 use App\Modules\Products\Models\Product;
@@ -36,7 +36,6 @@ class Order extends Model
     protected $casts = [
         'amount' => 'decimal:2',
         'quantity' => 'integer',
-        'status' => OrderStatus::class,
     ];
 
     public function user(): BelongsTo

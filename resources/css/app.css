@@ -659,6 +659,190 @@ body::before {
     box-shadow: 0 0 0 4px rgba(13, 148, 136, 0.15);
 }
 
+textarea.form-input,
+textarea.order-input {
+    min-height: 90px;
+    resize: vertical;
+}
+
+.help-text {
+    color: var(--muted);
+    font-size: 13px;
+    margin-top: 6px;
+}
+
+.order-total {
+    margin: 12px 0;
+    padding: 14px;
+    border-radius: 14px;
+    background: rgba(13, 148, 136, 0.06);
+    border: 1px solid rgba(13, 148, 136, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.total-number {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--primary);
+}
+
+.create-order {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+}
+
+.create-order .btn {
+    align-self: flex-start;
+}
+
+/* Create order modal */
+.order-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.55);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 18px;
+    opacity: 0;
+    pointer-events: none;
+    transition: var(--transition);
+    z-index: 1400;
+}
+
+.order-modal.is-visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.order-modal-card {
+    width: min(960px, 100%);
+    margin: 0;
+    padding: 22px;
+    border-radius: calc(var(--radius) + 2px);
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+}
+
+.modal-body {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 18px;
+    align-items: stretch;
+}
+
+.modal-preview {
+    background: linear-gradient(135deg, rgba(13, 148, 136, 0.08), rgba(245, 158, 11, 0.08));
+    border: 1px solid rgba(13, 148, 136, 0.15);
+    border-radius: var(--radius);
+    padding: 18px;
+    display: grid;
+    gap: 10px;
+    box-shadow: var(--shadow-soft);
+}
+
+.modal-image {
+    width: 100%;
+    height: 210px;
+    object-fit: contain;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: inset 0 1px 0 rgba(226, 232, 240, 0.7);
+}
+
+.price-row {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 8px;
+}
+
+.price-figure {
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--primary);
+}
+
+.price-unit {
+    color: var(--muted);
+    font-weight: 700;
+}
+
+.modal-meta {
+    display: grid;
+    gap: 8px;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.modal-meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.modal-form {
+    display: grid;
+    gap: 14px;
+}
+
+.modal-headline h3 {
+    font-size: 20px;
+    margin: 6px 0;
+}
+
+.modal-headline p {
+    margin: 0;
+}
+
+.modal-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+}
+
+.modal-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.modal-close {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    width: 38px;
+    height: 38px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.92);
+    color: var(--text);
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: var(--shadow-soft);
+}
+
+.modal-close:hover {
+    color: var(--primary);
+    border-color: rgba(13, 148, 136, 0.35);
+    transform: translateY(-1px);
+}
+
+body.modal-open {
+    overflow: hidden;
+}
+
 .user-orders {
     margin-top: 16px;
     padding: 16px;

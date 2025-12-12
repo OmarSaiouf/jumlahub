@@ -9,7 +9,7 @@ class ProductService
     public function all(array|null $filters = null, int $limit = 30, int $offset = 0)
     {
         $query = Product::query()
-            ->select('id', 'name', 'price', 'unit', 'quantity', 'quantity_sold', 'image', "category_id","discount",'is_quantity_finished')
+            ->select('id', 'name', 'price', 'unit', 'quantity', 'quantity_sold', 'image', "category_id", "discount", 'is_quantity_finished')
             ->with(['category:id,name']);
         if ($filters != null) {
             $query->filter($filters);
@@ -17,5 +17,10 @@ class ProductService
         $query->limit($limit)->offset($offset);
 
         return $query;
+    }
+
+    public function find(string|int $id)
+    {
+        return Product::find($id);
     }
 }
