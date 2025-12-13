@@ -20,7 +20,7 @@
             </div>
             <div class="progress-text">
                 <span>{{ $product['quantity_sold'] }} مباعة</span>
-                <span>{{ $product['quantity'] }} متبقية</span>
+                <span>{{ $product['quantity'] - $product['quantity_sold'] }} متبقية</span>
             </div>
         </div>
 

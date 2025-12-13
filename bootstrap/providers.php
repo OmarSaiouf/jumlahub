@@ -1,6 +1,8 @@
 <?php
 
+
 use App\Modules\Orders\OrderServiceProvider;
+use App\Modules\Payments\PaymentServiceProvider;
 use App\Modules\Products\ProductsServiceProvider;
 
 return [
@@ -9,4 +11,5 @@ return [
     ProductsServiceProvider::class,
     OrderServiceProvider::class,
     App\Providers\TelescopeServiceProvider::class,
+    PaymentServiceProvider::class
 ];
