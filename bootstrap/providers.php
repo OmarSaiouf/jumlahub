@@ -11,5 +11,6 @@ return [
     ProductsServiceProvider::class,
     OrderServiceProvider::class,
     App\Providers\TelescopeServiceProvider::class,
-    PaymentServiceProvider::class
+    PaymentServiceProvider::class,
+    
 ];

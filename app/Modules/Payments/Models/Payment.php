@@ -32,7 +32,7 @@ class Payment extends Model
 
     protected $casts = [
         'amount' => 'decimal:2',
-        'status' => PaymentStatus::class,
+        // 'status' => PaymentStatus::class,
         'metadata' => 'array',
     ];
 

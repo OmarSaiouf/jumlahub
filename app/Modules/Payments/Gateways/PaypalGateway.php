@@ -166,6 +166,7 @@ class PaypalGateway extends PaymentAbstraction
 
         try {
             $paymentId = $data['resource']['id'] ?? null;
+            Cache::put("providerCode_" . $paymentId, "paypal", now()->addMinutes(30));
             $eventType = $data['event_type'] ?? null;
 
 
