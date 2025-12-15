@@ -4,6 +4,7 @@ namespace App\Modules\Orders\Services;
 
 use App\Core\Enums\OrderStatus;
 use App\Modules\Orders\Events\CreatedOrder;
+use App\Modules\Orders\Events\OrderCreated;
 use App\Modules\Orders\Models\Order;
 use App\Modules\Products\Facades\ProductFacade;
 use Exception;
@@ -54,7 +55,7 @@ class OrderService
 
 
             // event(new CreatedOrder($order));
-            CreatedOrder::dispatch($order);
+            OrderCreated::dispatch($order);
 
             return $order;
         });

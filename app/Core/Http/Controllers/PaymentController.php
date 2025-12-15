@@ -7,7 +7,7 @@ use App\Core\Http\Requests\ShowPaymentRequest;
 use App\Modules\Orders\Facades\OrderFacade;
 use App\Modules\Orders\Models\Order;
 use App\Modules\Payment\DTO\PaymentData;
-use App\Modules\Payment\Enums\PaymentStatusEnum;
+use App\Modules\Payments\Enums\PaymentStatusEnum;
 use App\Modules\Payments\Facades\PaymentFacade;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;

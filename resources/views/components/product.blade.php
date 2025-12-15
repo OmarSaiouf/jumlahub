@@ -36,12 +36,13 @@
                 إنشاء طلب جملة
             </button>
 
-            @if (Route::has('login'))
-                <a href="{{ route('login') }}" class="btn btn-ghost">
-                    <i class="fas fa-eye"></i>
-                    تفاصيل إضافية
-                </a>
-            @endif
+
+
+            <a href="{{ route('product.show', ['id' => $product->id]) }}" class="btn btn-ghost">
+                <i class="fas fa-eye"></i>
+                تفاصيل إضافية
+            </a>
+
         </div>
     </div>
 </div>
