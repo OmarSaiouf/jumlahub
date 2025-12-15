@@ -1,6 +1,6 @@
 <?php
 
-namespace App\View\Components;
+namespace App\Core\View\Components;
 
 use App\Modules\Orders\Models\Order as ModelsOrder;
 use Closure;

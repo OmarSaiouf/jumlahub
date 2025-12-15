@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap');
+@import '@fortawesome/fontawesome-free/css/all.min.css';
 @import 'tailwindcss';
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
@@ -605,6 +606,26 @@ body::before {
     color: #0f7b6c;
 }
 
+.status-processing {
+    background: rgba(245, 158, 11, 0.16);
+    color: #b45309;
+}
+
+.status-pending {
+    background: rgba(13, 148, 136, 0.14);
+    color: var(--primary);
+}
+
+.status-cancelled {
+    background: rgba(239, 68, 68, 0.14);
+    color: #b91c1c;
+}
+
+.status-refunded {
+    background: rgba(59, 130, 246, 0.14);
+    color: #1d4ed8;
+}
+
 .progress-section {
     margin: 16px 0 10px;
 }
@@ -884,6 +905,19 @@ body.modal-open {
     font-size: 14px;
 }
 
+.order-meta-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 8px 12px;
+    color: var(--muted);
+    font-size: 14px;
+    margin: 10px 0 12px;
+}
+
+.order-meta-grid i {
+    color: var(--primary);
+}
+
 .order-status {
     display: inline-flex;
     align-items: center;
@@ -891,6 +925,100 @@ body.modal-open {
     padding: 6px 12px;
     border-radius: 999px;
     font-weight: 700;
+}
+
+.order-card-modern {
+    grid-template-columns: auto 1fr auto;
+    gap: 18px;
+    align-items: stretch;
+}
+
+.order-thumb {
+    position: relative;
+}
+
+.order-thumb .order-status {
+    position: absolute;
+    inset-inline-start: 8px;
+    inset-block-end: 8px;
+}
+
+.order-state {
+    margin-top: 8px;
+    margin-inline: auto;
+    padding: 9px 12px;
+    border-radius: 12px;
+    border: 1px solid rgba(13, 148, 136, 0.22);
+    background: rgba(13, 148, 136, 0.035);
+    display: inline-grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 8px;
+    max-width: 680px;
+}
+
+.order-state .state-copy {
+    display: grid;
+    gap: 3px;
+    max-width: 460px;
+    min-width: 0;
+}
+
+.order-state .state-title {
+    font-weight: 800;
+    color: var(--text);
+    font-size: 14px;
+}
+
+.order-state .state-text {
+    margin: 0;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.order-state.is-processing {
+    background: rgba(245, 158, 11, 0.12);
+    border-color: rgba(245, 158, 11, 0.35);
+}
+
+.order-state.is-processing .state-title {
+    color: #b45309;
+}
+
+.order-state.is-pending {
+    background: rgba(13, 148, 136, 0.08);
+    border-color: rgba(13, 148, 136, 0.35);
+}
+
+.order-state.is-default {
+    background: rgba(226, 232, 240, 0.4);
+    border-color: rgba(226, 232, 240, 0.8);
+}
+
+.order-state .state-visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 80px;
+    max-width: 90px;
+}
+
+.order-state .state-visual .loader {
+    transform: scale(0.6);
+    transform-origin: center;
+}
+
+.order-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.btn-compact {
+    padding: 10px 14px;
+    border-radius: 12px;
 }
 
 /* Profile */
@@ -1376,6 +1504,36 @@ body.modal-open {
         text-align: center;
     }
 
+    .order-card-modern {
+        grid-template-columns: 1fr;
+    }
+
+    .order-meta-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .order-actions {
+        width: 100%;
+        align-items: center;
+    }
+
+    .order-state {
+        grid-template-columns: 1fr;
+        padding: 9px 10px;
+        gap: 6px;
+        width: 100%;
+        max-width: none;
+    }
+
+    .order-state .state-copy {
+        max-width: 100%;
+    }
+
+    .order-state .state-visual {
+        width: 100%;
+        justify-content: flex-start;
+    }
+
     .order-image {
         margin: 0 auto;
     }
@@ -1418,5 +1576,127 @@ body.modal-open {
     .btn {
         width: 100%;
         justify-content: center;
+    }
+
+    .order-state {
+        padding: 8px 9px;
+        gap: 5px;
+        width: 100%;
+    }
+
+    .order-state .state-text {
+        font-size: 12px;
+    }
+}
+
+
+/* From Uiverse.io by vinodjangid07 */
+.loader {
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.truckWrapper {
+    width: 200px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    align-items: center;
+    justify-content: flex-end;
+    overflow-x: hidden;
+}
+
+/* truck upper body */
+.truckBody {
+    width: 130px;
+    height: fit-content;
+    margin-bottom: 6px;
+    animation: motion 1s linear infinite;
+}
+
+/* truck suspension animation*/
+@keyframes motion {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(3px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+/* truck's tires */
+.truckTires {
+    width: 130px;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 10px 0px 15px;
+    position: absolute;
+    bottom: 0;
+}
+
+.truckTires svg {
+    width: 24px;
+}
+
+.road {
+    width: 100%;
+    height: 1.5px;
+    background-color: #282828;
+    position: relative;
+    bottom: 0;
+    align-self: flex-end;
+    border-radius: 3px;
+}
+
+.road::before {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 100%;
+    background-color: #282828;
+    right: -50%;
+    border-radius: 3px;
+    animation: roadAnimation 1.4s linear infinite;
+    border-left: 10px solid white;
+}
+
+.road::after {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 100%;
+    background-color: #282828;
+    right: -65%;
+    border-radius: 3px;
+    animation: roadAnimation 1.4s linear infinite;
+    border-left: 4px solid white;
+}
+
+.lampPost {
+    position: absolute;
+    bottom: 0;
+    right: -90%;
+    height: 90px;
+    animation: roadAnimation 1.4s linear infinite;
+}
+
+@keyframes roadAnimation {
+    0% {
+        transform: translateX(0px);
+    }
+
+    100% {
+        transform: translateX(-350px);
     }
 }

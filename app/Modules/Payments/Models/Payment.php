@@ -4,6 +4,7 @@ namespace App\Modules\Payments\Models;
 
 use App\Core\Enums\PaymentStatus;
 use App\Core\Models\PaymentProvider;
+use App\Modules\Invoices\Models\Invoice;
 use App\Modules\Orders\Models\Order;
 use App\Modules\Users\Models\User;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
@@ -32,7 +33,7 @@ class Payment extends Model
 
     protected $casts = [
         'amount' => 'decimal:2',
-        'status' => PaymentStatus::class,
+        // 'status' => PaymentStatus::class,
         'metadata' => 'array',
     ];
 

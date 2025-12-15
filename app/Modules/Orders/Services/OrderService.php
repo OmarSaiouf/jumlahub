@@ -21,7 +21,10 @@ class OrderService
             $filters = array_merge($filter);
         }
         $query = $this->get($filters)
-            ->with(['product:id,name,image'])
+            ->with([
+                'product:id,name,image,currency_id',
+                'product.currency:id,code',
+            ])
             ->limit($limit)
             ->offset($offset);
 
@@ -57,6 +60,24 @@ class OrderService
         });
     }
 
+    public function check($orderId, $user_id)
+    {
+        $filters = [
+            'user_id' => $user_id,
+            "id" => $orderId
+        ];
+        return $this->get($filters)->exists();
+    }
+
+
+    public function find($orderId)
+    {
+        return Order::with([
+            'product.currency:id,code',
+            'product',
+            'paymentProvider:id,name',
+        ])->findOrFail($orderId);
+    }
 
     private function get(array|null $filters = null)
     {

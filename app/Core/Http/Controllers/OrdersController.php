@@ -32,10 +32,6 @@ class OrdersController extends Controller
         } catch (Exception $e) {
             return back()->with('error', $e->getMessage());
         }
-        return redirect(route('my.order'))->with('success', [
-            'message' => 'Order created.',
-            "action" => "create-payment",
-            "order" => $order ?? null
-        ]);
+        return redirect(route('payment.show', ['order_id' => $order->id]));
     }
 }

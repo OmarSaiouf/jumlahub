@@ -1,6 +1,6 @@
 <?php
 
-use App\Core\Enums\PaymentStatus;
+use App\Modules\Payment\Enums\PaymentStatusEnum;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -17,7 +17,7 @@ return new class extends Migration {
             $table->foreignUuid('order_id')->constrained('orders');
             $table->foreignId('payment_provider_id')->constrained('payment_providers');
             $table->decimal('amount', 10, 2);
-            $table->enum('status', PaymentStatus::values())->default(PaymentStatus::PENDING->getValue());
+            $table->enum('status', PaymentStatusEnum::values())->default(PaymentStatusEnum::PENDING->value);
             $table->string('transaction_id')->nullable();
             $table->json('metadata')->nullable();
             $table->timestamps();
