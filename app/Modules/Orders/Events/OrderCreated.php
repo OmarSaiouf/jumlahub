@@ -6,7 +6,7 @@ use App\Modules\Orders\Models\Order;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class CreatedOrder
+class OrderCreated
 {
     use Dispatchable, SerializesModels;
 

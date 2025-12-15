@@ -7,6 +7,7 @@ enum InvoiceStatus: string
     case UNPAID = 'unpaid';
     case PAID = 'paid';
     case OVERDUE = 'overdue';
+    case PENDING = 'pending';
 
     public static function values(): array
     {
@@ -19,6 +20,7 @@ enum InvoiceStatus: string
             self::UNPAID => 'unpaid',
             self::PAID => 'paid',
             self::OVERDUE => 'overdue',
+            self::PENDING => 'pending',
         };
     }
 

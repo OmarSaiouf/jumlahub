@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Modules\Payments\Models;
+namespace App\Modules\Invoices\Models;
 
 use App\Core\Enums\InvoiceStatus;
 use App\Core\Models\Currency;
+use App\Modules\Payments\Models\Payment;
 use App\Modules\Users\Models\User;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -33,7 +34,6 @@ class Invoice extends Model
 
     protected $casts = [
         'amount' => 'decimal:2',
-        'status' => InvoiceStatus::class,
         'metadata' => 'array',
         'due_date' => 'date',
         'issued_at' => 'date',
