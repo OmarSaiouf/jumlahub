@@ -3,7 +3,6 @@
 namespace App\Modules\Orders;
 
 use App\Modules\Orders\Services\OrderService;
-use App\Modules\Products\Services\ProductService;
 use Illuminate\Support\ServiceProvider;
 
 class OrderServiceProvider extends ServiceProvider

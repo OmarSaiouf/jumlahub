@@ -2,7 +2,7 @@
 
 namespace App\Core\Models;
 
-use App\Modules\Payments\Models\Invoice;
+use App\Modules\Invoices\Models\Invoice;
 use App\Modules\Products\Models\Product;
 use App\Modules\Users\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
