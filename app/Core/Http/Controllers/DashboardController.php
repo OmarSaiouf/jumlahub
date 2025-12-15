@@ -3,7 +3,7 @@
 namespace App\Core\Http\Controllers;
 
 use App\Core\Enums\OrderStatus;
-use App\Core\Enums\PaymentStatus;
+use App\Modules\Payments\Enums\PaymentStatusEnum;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -34,7 +34,7 @@ class DashboardController extends Controller
         $ordersClosed = $ordersCompleted + $ordersCancelled + $ordersRefunded;
 
         $paymentSummary = $user->payments()
-            ->where('status', PaymentStatus::COMPLETED)
+            ->where('status', PaymentStatusEnum::PAID->value)
             ->selectRaw('COALESCE(SUM(amount), 0) as total_amount, COUNT(*) as total_count')
             ->first();
 

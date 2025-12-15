@@ -22,6 +22,11 @@ Route::prefix("payment")->middleware(['auth:web'])->group(function () {
 Route::post("/callback", [PaymentController::class, "callback"])->name('payment.callback');
 
 
+Route::prefix('product')->group(function () {
+    Route::get('/{id}', [\App\Core\Http\Controllers\ProductController::class, 'show'])->name('product.show');
+});
+
+
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', DashboardController::class)->name('dashboard');
 });
