@@ -62,7 +62,6 @@ class PaymentController extends Controller
                 return back()->with('error', 'Payment failed');
             }
 
-           
             DB::commit();
 
             return redirect()->to($result->data['redirect_url']);
@@ -76,7 +75,7 @@ class PaymentController extends Controller
 
     public function callback(Request $request)
     {
-        if(PaymentFacade::processWebhook($request)){
+        if (PaymentFacade::processWebhook($request)) {
             // OrderFacade::find();
         }
 

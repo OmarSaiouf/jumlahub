@@ -15,8 +15,8 @@ use App\Core\Models\City;
 use App\Core\Models\Country;
 use App\Core\Models\Currency;
 use App\Core\Models\Language;
+use App\Modules\Invoices\Models\Invoice;
 use App\Modules\Orders\Models\Order;
-use App\Modules\Payments\Models\Invoice;
 use App\Modules\Payments\Models\Payment;
 
 class User extends Authenticatable implements MustVerifyEmail

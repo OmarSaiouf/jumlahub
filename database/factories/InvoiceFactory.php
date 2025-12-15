@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 use App\Core\Enums\InvoiceStatus;
 use App\Core\Models\Currency;
-use App\Modules\Payments\Models\Invoice;
+use App\Modules\Invoices\Models\Invoice;
 use App\Modules\Payments\Models\Payment;
 use App\Modules\Users\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
