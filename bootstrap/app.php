@@ -17,7 +17,9 @@ return Application::configure(basePath: dirname(__DIR__))
         FortifyServiceProvider::class,
     ])
     ->withMiddleware(function (Middleware $middleware): void {
-        //
+        $middleware->alias([
+            'setLocaleAndCurrency' => App\Core\Http\Middleware\SetLocaleAndCurrency::class,
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //

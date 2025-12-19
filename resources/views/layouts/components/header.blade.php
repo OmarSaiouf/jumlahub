@@ -1,10 +1,16 @@
 @php($showActions = $showActions ?? true)
 
+
+{{ app()->getLocale() }}
+<br>
+{{ app('currency') }}
+
 <header class="header">
     <div class="container header-content">
         <div class="nav-left">
             <a href="{{ url('/') }}" class="logo" aria-label="{{ config('app.name', 'JumlaHub') }}">
-                <img class="logo-img" src="{{ asset('images/logo.png') }}" alt="{{ config('app.name', 'JumlaHub') }} logo" loading="lazy">
+                <img class="logo-img" src="{{ asset('images/logo.png') }}" alt="{{ config('app.name', 'JumlaHub') }} logo"
+                    loading="lazy">
             </a>
             <nav class="nav-links">
                 <a href="{{ url('/') }}" class="{{ request()->is('/') ? 'active' : '' }}">الرئيسية</a>
@@ -17,8 +23,8 @@
         </div>
 
         <form action="{{ url('/products') }}" method="GET" class="search">
-            <input type="search" name="q" value="{{ request('q') }}" placeholder="ابحث عن عروض أو منتجات بالجملة..."
-                   aria-label="بحث المنتجات">
+            <input type="search" name="q" value="{{ request('q') }}"
+                placeholder="ابحث عن عروض أو منتجات بالجملة..." aria-label="بحث المنتجات">
             <i class="fas fa-search"></i>
         </form>
 
@@ -52,5 +58,37 @@
                 @endauth
             </div>
         @endif
+
+        <form method="POST" action="{{ route('preferences.update') }}" class="d-flex align-items-center gap-2 me-3">
+            @csrf
+            <select name="language" class="form-select form-select-sm w-auto">
+                @foreach ($languages as $language)
+                    <option value="{{ $language->code }}"
+                        {{ app()->getLocale() == $language->code ? 'selected' : '' }}>
+                        {{ $language->name }}
+                    </option>
+                @endforeach
+            </select>
+
+            <select name="currency" class="form-select form-select-sm w-auto">
+                @foreach ($currencies as $currency)
+                    <option value="{{ $currency->code }}" {{ app('currency') === $currency->code ? 'selected' : '' }}>
+                        {{ $currency->name }}
+                    </option>
+                @endforeach
+            </select>
+        </form>
     </div>
 </header>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.querySelector('form[action="{{ route('preferences.update') }}"]');
+        const selects = form.querySelectorAll('select');
+
+        selects.forEach(select => {
+            select.addEventListener('change', function() {
+                form.submit();
+            });
+        });
+    });
+</script>

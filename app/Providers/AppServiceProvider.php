@@ -5,6 +5,7 @@ namespace App\Providers;
 
 use App\Core\Services\PaymentProviderService;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -30,5 +31,10 @@ class AppServiceProvider extends ServiceProvider
         Factory::guessFactoryNamesUsing(
             fn(string $modelName) => 'Database\\Factories\\' . class_basename($modelName) . 'Factory'
         );
+       
     }
+
+   
+
+
 }
