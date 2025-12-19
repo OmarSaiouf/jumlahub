@@ -101,7 +101,7 @@
             </div>
 
             <div class="categories-grid">
-                @foreach ($categories->cursor() as $category)
+                @foreach ($categories as $category)
                     <x-category :category="$category"></x-category>
                 @endforeach
             </div>
@@ -121,7 +121,7 @@
             </div>
 
             <div class="product-grid">
-                @foreach ($products->cursor() as $product)
+                @foreach ($products as $product)
                     <x-product :product="$product"></x-product>
                     <x-create-order :product="$product" :paymentProviders="$paymentProviders"></x-create-order>
                 @endforeach

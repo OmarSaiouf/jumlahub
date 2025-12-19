@@ -98,7 +98,7 @@ trait FilterManager
 
         $clean = array_values(array_filter(
             $value,
-            static fn ($item) => $item !== null && $item !== ''
+            static fn($item) => $item !== null && $item !== ''
         ));
 
         if (empty($clean)) {
@@ -255,7 +255,7 @@ trait FilterManager
 
         return count(array_filter(
             $value,
-            static fn ($item) => $item !== null && $item !== ''
+            static fn($item) => $item !== null && $item !== ''
         )) === 0;
     }
 }
