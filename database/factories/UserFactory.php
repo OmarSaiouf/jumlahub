@@ -34,7 +34,7 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
-        $countryFactory = Country::factory();
+        $countryFactory = Country::inRandomOrder();
 
         return [
             'name' => fake()->name(),
@@ -43,10 +43,10 @@ class UserFactory extends Factory
             'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),
             'phone' => fake()->phoneNumber(),
-            'language_id' => Language::factory(),
-            'currency_id' => Currency::factory(),
-            'country_id' => $countryFactory,
-            'city_id' => City::factory()->for($countryFactory),
+            'language_id' => Language::inRandomOrder()->first()->id,
+            'currency_id' => Currency::inRandomOrder()->first()->id,
+            'country_id' => $countryFactory->first()->id,
+            'city_id' => City::inRandomOrder()->where('country_id', $countryFactory->first()->id)->first()->id,
             'address' => fake()->address(),
             'role' => UserRole::USER,
             'image' => fake()->imageUrl(300, 300, 'people', true),

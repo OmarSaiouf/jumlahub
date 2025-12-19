@@ -15,7 +15,7 @@ return new class extends Migration {
             $table->string('name');
             $table->string('code');
             $table->string('gateway_class');
-            $table->json('config')->default([]);
+            $table->json('config')->default("[]");
             $table->boolean("is_active")->default(true);
             $table->timestamps();
         });

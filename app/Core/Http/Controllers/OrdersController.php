@@ -2,7 +2,6 @@
 
 namespace App\Core\Http\Controllers;
 
-use App\Core\Facades\PaymentProviderFacade;
 use App\Core\Http\Requests\CreateOrderRequest;
 use App\Core\Http\Requests\GetMyOrdersRequest;
 use App\Modules\Orders\Facades\OrderFacade;

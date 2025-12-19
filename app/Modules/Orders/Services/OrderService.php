@@ -3,7 +3,6 @@
 namespace App\Modules\Orders\Services;
 
 use App\Core\Enums\OrderStatus;
-use App\Modules\Orders\Events\CreatedOrder;
 use App\Modules\Orders\Events\OrderCreated;
 use App\Modules\Orders\Models\Order;
 use App\Modules\Products\Facades\ProductFacade;
@@ -89,4 +88,5 @@ class OrderService
         return $query;
     }
 
+   
 }

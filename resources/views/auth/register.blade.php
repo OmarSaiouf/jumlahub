@@ -11,20 +11,20 @@
         <div class="grid gap-3 md:grid-cols-2">
             <div class="form-group">
                 <label for="name" class="form-label">الاسم الكامل</label>
-                <input id="name" name="name" type="text" value="{{ old('name') }}" required autofocus autocomplete="name"
-                       class="form-input" placeholder="الاسم الأول والاسم الأخير">
+                <input id="name" name="name" type="text" value="{{ old('name') }}" required autofocus
+                    autocomplete="name" class="form-input" placeholder="الاسم الأول والاسم الأخير">
             </div>
 
             <div class="form-group">
                 <label for="email" class="form-label">البريد الإلكتروني</label>
-                <input id="email" name="email" type="email" value="{{ old('email') }}" required autocomplete="username"
-                       class="form-input" placeholder="name@email.com">
+                <input id="email" name="email" type="email" value="{{ old('email') }}" required
+                    autocomplete="username" class="form-input" placeholder="name@email.com">
             </div>
 
             <div class="form-group">
                 <label for="phone" class="form-label">رقم الجوال</label>
                 <input id="phone" name="phone" type="text" value="{{ old('phone') }}" required autocomplete="tel"
-                       class="form-input" placeholder="+9665xxxxxxx">
+                    class="form-input" placeholder="+9665xxxxxxx">
             </div>
 
             <div class="form-group">
@@ -61,35 +61,35 @@
                 <label for="city_id" class="form-label">المدينة</label>
                 <select id="city_id" name="city_id" required class="form-input">
                     <option value="">اختر المدينة</option>
-                    @foreach ($cities as $city)
-                        <option value="{{ $city->id }}" @selected(old('city_id') == $city->id)>{{ $city->name }}</option>
-                    @endforeach
                 </select>
             </div>
+
         </div>
 
         <div class="form-group">
             <label for="address" class="form-label">العنوان التفصيلي</label>
-            <input id="address" name="address" type="text" value="{{ old('address') }}" class="form-input" placeholder="الحي، الشارع، أقرب معلم">
+            <input id="address" name="address" type="text" value="{{ old('address') }}" class="form-input"
+                placeholder="الحي، الشارع، أقرب معلم">
         </div>
 
         <div class="grid gap-3 md:grid-cols-2">
             <div class="form-group">
                 <label for="password" class="form-label">كلمة المرور</label>
                 <input id="password" name="password" type="password" required autocomplete="new-password"
-                       class="form-input" placeholder="••••••••">
+                    class="form-input" placeholder="••••••••">
             </div>
 
             <div class="form-group">
                 <label for="password_confirmation" class="form-label">تأكيد كلمة المرور</label>
-                <input id="password_confirmation" name="password_confirmation" type="password" required autocomplete="new-password"
-                       class="form-input" placeholder="أعد كتابة كلمة المرور">
+                <input id="password_confirmation" name="password_confirmation" type="password" required
+                    autocomplete="new-password" class="form-input" placeholder="أعد كتابة كلمة المرور">
             </div>
         </div>
 
         <button type="submit" class="btn btn-primary auth-submit">
             <span>إنشاء الحساب</span>
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 12h14M12 5l7 7-7 7" />
             </svg>
         </button>
@@ -98,4 +98,57 @@
             لديك حساب بالفعل؟ <a href="{{ route('login') }}">تسجيل الدخول</a>
         </p>
     </form>
+    <script>
+        document.getElementById('country_id').addEventListener('change', function() {
+            const countryId = this.value;
+            const citySelect = document.getElementById('city_id');
+
+            citySelect.innerHTML = '<option value="">جاري التحميل...</option>';
+
+            if (!countryId) {
+                citySelect.innerHTML = '<option value="">اختر المدينة</option>';
+                return;
+            }
+
+            fetch(`/countries/${countryId}/cities`)
+                .then(response => response.json())
+                .then(cities => {
+                    citySelect.innerHTML = '<option value="">اختر المدينة</option>';
+
+                    cities.forEach(city => {
+                        const option = document.createElement('option');
+                        option.value = city.id;
+                        option.textContent = city.name;
+                        citySelect.appendChild(option);
+                    });
+                })
+                .catch(() => {
+                    citySelect.innerHTML = '<option value="">حدث خطأ</option>';
+                });
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const oldCountry = "{{ old('country_id') }}";
+            const oldCity = "{{ old('city_id') }}";
+
+            if (oldCountry) {
+                fetch(`/countries/${oldCountry}/cities`)
+                    .then(res => res.json())
+                    .then(cities => {
+                        const citySelect = document.getElementById('city_id');
+                        citySelect.innerHTML = '<option value="">اختر المدينة</option>';
+
+                        cities.forEach(city => {
+                            const option = document.createElement('option');
+                            option.value = city.id;
+                            option.textContent = city.name;
+                            if (city.id == oldCity) {
+                                option.selected = true;
+                            }
+                            citySelect.appendChild(option);
+                        });
+                    });
+            }
+        });
+    </script>
 @endsection

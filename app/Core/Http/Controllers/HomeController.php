@@ -10,9 +10,9 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $categories = CategoryFacade::all();
+        $categories = CategoryFacade::all(limit: 12);
         $products = ProductFacade::all();
-        
+
         return view('index', [
             'categories' => $categories,
             "products" => $products,

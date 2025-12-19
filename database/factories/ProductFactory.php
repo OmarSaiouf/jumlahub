@@ -21,7 +21,7 @@ class ProductFactory extends Factory
     {
         $quantity = fake()->numberBetween(10, 200);
         $quantitySold = fake()->numberBetween(0, $quantity);
-        $countryFactory = Country::factory();
+        $countryFactory = Country::inRandomOrder()->first()->id;
 
         return [
             'name' => fake()->words(3, true),
@@ -32,12 +32,12 @@ class ProductFactory extends Factory
             'quantity_sold' => $quantitySold,
             'discount' => fake()->numberBetween(0, 30),
             'is_quantity_finished' => $quantitySold >= $quantity,
-            'category_id' => Category::factory(),
-            'language_id' => Language::factory(),
+            'category_id' => Category::inRandomOrder()->first()->id,
+            'language_id' => Language::inRandomOrder()->first()->id,
             // 'image' => fake()->imageUrl(640, 480, 'technics', true),
             'country_id' => $countryFactory,
-            'city_id' => City::factory()->for($countryFactory),
-            'currency_id' => Currency::factory(),
+            'city_id' => City::inRandomOrder()->where('country_id', $countryFactory)->first()->id,
+            'currency_id' => Currency::inRandomOrder()->first()->id,
         ];
     }
 }

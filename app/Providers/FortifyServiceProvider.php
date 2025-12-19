@@ -39,7 +39,7 @@ class FortifyServiceProvider extends ServiceProvider
                 'languages' => Language::select('id', 'name')->orderBy('name')->get(),
                 'currencies' => Currency::select('id', 'name')->orderBy('name')->get(),
                 'countries' => Country::select('id', 'name')->orderBy('name')->get(),
-                'cities' => City::select('id', 'name', 'country_id')->orderBy('name')->get(),
+                'cities' => City::select('id', 'name', 'country_id'),
             ]);
         });
         Fortify::requestPasswordResetLinkView(fn() => view('auth.forgot-password'));
@@ -65,7 +65,7 @@ class FortifyServiceProvider extends ServiceProvider
             return Limit::perMinute(5)->by($request->session()->get('login.id'));
         });
 
-        Fortify::ignoreRoutes(); // تعطيل التسجيل التلقائي
+        Fortify::ignoreRoutes();
 
 
 

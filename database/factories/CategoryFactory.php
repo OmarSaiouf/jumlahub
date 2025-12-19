@@ -18,7 +18,7 @@ class CategoryFactory extends Factory
         return [
             'name' => fake()->words(2, true),
             'parent_id' => null,
-            'language_id' => Language::factory(),
+            'language_id' => Language::inRandomOrder()->first()->id,
             'description' => fake()->sentence(8),
             // 'image' => fake()->imageUrl(640, 480, 'business', true),
         ];
