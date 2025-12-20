@@ -8,7 +8,7 @@
         </div>
         <h3 class="product-name">{{ $product['name'] }}</h3>
         <div class="product-price">
-            {{ $product['price'] }}
+            {{ $product['price'] }} {{ $product->currency->code ?? '' }}
             <span>{{ $product['unit'] }}</span>
         </div>
 

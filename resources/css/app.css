@@ -2,6 +2,11 @@
 @import '@fortawesome/fontawesome-free/css/all.min.css';
 @import 'tailwindcss';
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
 @source '../**/*.blade.php';
@@ -109,7 +114,7 @@ body::before {
     top: 0;
     left: 0;
     right: 0;
-    z-index: 1000;
+    z-index: 20;
     background: rgba(255, 255, 255, 0.6);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(226, 232, 240, 0.8);

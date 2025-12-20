@@ -3,9 +3,9 @@
 
 namespace App\Modules\Payments\Contracts;
 
-use App\Modules\Payment\DTO\PaymentData;
-use App\Modules\Payment\DTO\PaymentResult;
-use Illuminate\Support\Facades\Request;
+use App\Modules\Payments\DTO\PaymentData;
+use App\Modules\Payments\DTO\PaymentResult;
+use Illuminate\Http\Request;
 
 interface PaymentGatewayInterface
 {

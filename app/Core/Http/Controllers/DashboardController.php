@@ -3,6 +3,8 @@
 namespace App\Core\Http\Controllers;
 
 use App\Core\Enums\OrderStatus;
+use App\Core\Models\Currency;
+use App\Core\Models\Language;
 use App\Modules\Payments\Enums\PaymentStatusEnum;
 use Illuminate\Http\Request;
 
@@ -55,6 +57,8 @@ class DashboardController extends Controller
             'ordersTotal' => $ordersTotal,
             'ordersInProgress' => $ordersInProgress,
             'ordersClosed' => $ordersClosed,
+            'languages' => Language::select('id', 'name', 'code')->orderBy('name')->get(),
+            'currencies' => Currency::select('id', 'name', 'code')->orderBy('name')->get(),
             'paymentsCompletedTotal' => $paymentsCompletedTotal,
             'paymentsCompletedCount' => $paymentsCompletedCount,
             'lastPayment' => $lastPayment,

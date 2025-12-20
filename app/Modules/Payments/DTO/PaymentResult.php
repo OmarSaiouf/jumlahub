@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Modules\Payment\DTO;
+namespace App\Modules\Payments\DTO;
 
-use App\Modules\Payment\Enums\PaymentStatusEnum;
+use App\Modules\Payments\Enums\PaymentStatusEnum;
 
 class PaymentResult
 {

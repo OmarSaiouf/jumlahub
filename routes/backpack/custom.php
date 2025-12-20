@@ -14,8 +14,19 @@ Route::group([
         (array) config('backpack.base.web_middleware', 'web'),
         (array) config('backpack.base.middleware_key', 'admin')
     ),
-    'namespace' => 'App\Http\Controllers\Admin',
+    'namespace' => 'App\Modules\Admin\Http\Controllers',
 ], function () { // custom admin routes
+    Route::crud('city', 'CityCrudController');
+    Route::crud('country', 'CountryCrudController');
+    Route::crud('currency', 'CurrencyCrudController');
+    Route::crud('language', 'LanguageCrudController');
+    Route::crud('payment-provider', 'PaymentProviderCrudController');
+    Route::crud('invoice', 'InvoiceCrudController');
+    Route::crud('order', 'OrderCrudController');
+    Route::crud('payment', 'PaymentCrudController');
+    Route::crud('category', 'CategoryCrudController');
+    Route::crud('product', 'ProductCrudController');
+    Route::crud('user', 'UserCrudController');
 }); // this should be the absolute last line of this file
 
 /**

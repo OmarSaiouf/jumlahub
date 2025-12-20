@@ -12,8 +12,12 @@
             <span class="muted">آخر التحركات على طلباتك بالجملة</span>
         </div>
 
-        @foreach ($orders->cursor() as $item)
-            <x-order :order="$item"></x-order>
+        @foreach ($orders->get() as $item)
+            @if ($item->id)
+                <x-order :order="$item"></x-order>
+            @else
+                <p>No order found.</p>
+            @endif
         @endforeach
 
     </main>

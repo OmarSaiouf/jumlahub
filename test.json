@@ -1,0 +1,17 @@
+{
+    "error": "Payment gateway error: {\"name\":\"UNPROCESSABLE_ENTITY\",\"details\":[{\"issue\":\"CURRENCY_NOT_SUPPORTED\",\"description\":\"Currency code is not currently supported. Please refer https://developer.paypal.com/docs/integration/direct/rest/currency-codes/ for list of supported currency codes.\"}],\"message\":\"The requested action could not be performed, semantically incorrect, or failed business validation.\",\"debug_id\":\"f196227798c54\",\"links\":[{\"href\":\"https://developer.paypal.com/api/rest/reference/orders/v2/errors/#CURRENCY_NOT_SUPPORTED\",\"rel\":\"information_link\"}]}",
+    "data": {
+        "App\\Modules\\Payments\\DTO\\PaymentData": {
+            "amount": 1281.26,
+            "currency": "SYP",
+            "referenceId": "R-019b3d9c-ca20-70b1-8dc8-25d68789186b-694711b530049",
+            "description": "Order id: 019b3d9c-ca20-70b1-8dc8-25d68789186b",
+            "customer": [],
+            "meta": {
+                "providerId": 1,
+                "order_id": "019b3d9c-ca20-70b1-8dc8-25d68789186b",
+                "user_id": "019b3cff-a552-7153-9079-bb7588a74639"
+            }
+        }
+    }
+}

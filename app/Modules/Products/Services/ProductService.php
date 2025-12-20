@@ -12,8 +12,11 @@ class ProductService
         if ($filters != null) {
             $query->filter($filters);
         }
-        $query->select('id', 'name', 'price', 'unit', 'quantity', 'quantity_sold', 'image', "category_id", "language_id", "currency_id", "discount", 'is_quantity_finished')
-            ->with(['category:id,name']);
+        $query->with(['category:id,name', 'currency:id,code,name', 'language:id,code,name', 'country:id,name,code', 'city:id,name'])
+            ->where('currency_id', $filters['currency_id'] ?? null)
+            ->where('country_id', $filters['country_id'] ?? null)
+            ->where('city_id', $filters['city_id'] ?? null)
+            ->where('language_id', $filters['language_id'] ?? null);
         $query->limit($limit)->offset($offset);
 
         return $query;

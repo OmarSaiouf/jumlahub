@@ -4,9 +4,10 @@ namespace App\Core\Http\Controllers;
 
 use App\Core\Http\Requests\PayRequest;
 use App\Core\Http\Requests\ShowPaymentRequest;
+use App\Core\Models\Currency;
+use App\Core\Models\Language;
 use App\Modules\Orders\Facades\OrderFacade;
-use App\Modules\Orders\Models\Order;
-use App\Modules\Payment\DTO\PaymentData;
+use App\Modules\Payments\DTO\PaymentData;
 use App\Modules\Payments\Enums\PaymentStatusEnum;
 use App\Modules\Payments\Facades\PaymentFacade;
 use Illuminate\Http\Request;
@@ -20,7 +21,9 @@ class PaymentController extends Controller
 
         $order = OrderFacade::find($validated['order_id']);
         return view("pages.payment", [
-            'order' => $order
+            'order' => $order,
+            'languages' => Language::select('id', 'name', 'code')->orderBy('name')->get(),
+            'currencies' => Currency::select('id', 'name', 'code')->orderBy('name')->get(),
         ]);
     }
 

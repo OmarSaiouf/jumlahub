@@ -18,6 +18,12 @@ class Language extends Model
         'code',
     ];
 
+    public static function getFromCode($code)
+    {
+        $language = self::where('code', $code)->first();
+        return $language ? $language : null;
+    }
+
     public function users(): HasMany
     {
         return $this->hasMany(User::class);

@@ -55,6 +55,7 @@ class CheckIfAdmin
      */
     public function handle($request, Closure $next)
     {
+
         if (backpack_auth()->guest()) {
             return $this->respondToUnauthorizedRequest($request);
         }

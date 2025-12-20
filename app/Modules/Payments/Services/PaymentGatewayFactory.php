@@ -14,7 +14,7 @@ class PaymentGatewayFactory
             ->firstOrFail();
 
         return app($provider->gateway_class, [
-            'config' => $provider->config,
+            'config' => is_array($provider->config) ? $provider->config : json_decode($provider->config, 1),
         ]);
     }
 }

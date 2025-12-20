@@ -14,7 +14,7 @@ return [
     | By default the registration is open only on localhost.
     */
 
-    'registration_open' => env('BACKPACK_REGISTRATION_OPEN', env('APP_ENV') === 'local'),
+    'registration_open' => false,//env('BACKPACK_REGISTRATION_OPEN', env('APP_ENV') === 'local'),
 
     /*
     |--------------------------------------------------------------------------
@@ -114,6 +114,7 @@ return [
         App\Core\Http\Middleware\CheckIfAdmin::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
         \Backpack\CRUD\app\Http\Middleware\AuthenticateSession::class,
+        App\Core\Http\Middleware\SetLocaleAndCurrency::class,
         // \Backpack\CRUD\app\Http\Middleware\UseBackpackAuthGuardInsteadOfDefaultAuthGuard::class,
     ],
 
@@ -191,4 +192,7 @@ return [
     */
 
     'token_username' => env('BACKPACK_TOKEN_USERNAME', false),
+
+
+
 ];

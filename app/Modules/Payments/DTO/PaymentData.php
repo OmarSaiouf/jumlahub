@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Payment\DTO;
+namespace App\Modules\Payments\DTO;
 
 use InvalidArgumentException;
 

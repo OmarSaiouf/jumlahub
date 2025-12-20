@@ -12,6 +12,7 @@ class CategoryService
         if ($filters != null) {
             $query->filter($filters);  // returns Builder
         }
+        $query->where('language_id', $filters['language_id'] ?? null);
         $query->limit($limit)->offset($offset);
 
         return $query;
