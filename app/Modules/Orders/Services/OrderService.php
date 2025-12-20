@@ -75,7 +75,7 @@ class OrderService
         return Order::with([
             'product.currency:id,code',
             'product',
-            'paymentProvider:id,name',
+            'paymentProvider:id,name,code',
         ])->findOrFail($orderId);
     }
 
@@ -88,5 +88,5 @@ class OrderService
         return $query;
     }
 
-   
+
 }

@@ -1,10 +1,6 @@
 @php($showActions = $showActions ?? true)
 
 
-{{ app()->getLocale() }}
-<br>
-{{ app('currency') }}
-
 <header class="header">
     <div class="container header-content">
         <div class="nav-left">
@@ -79,6 +75,7 @@
             </select>
         </form>
     </div>
+    <x-toast />
 </header>
 <script>
     document.addEventListener('DOMContentLoaded', function() {

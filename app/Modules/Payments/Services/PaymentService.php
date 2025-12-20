@@ -4,9 +4,9 @@ namespace App\Modules\Payments\Services;
 
 use App\Core\Enums\OrderStatus;
 use App\Modules\Invoices\Models\Invoice;
-use App\Modules\Payment\DTO\PaymentData;
-use App\Modules\Payment\DTO\PaymentResult;
-use App\Modules\Payment\Enums\PaymentStatusEnum;
+use App\Modules\Payments\DTO\PaymentData;
+use App\Modules\Payments\DTO\PaymentResult;
+use App\Modules\Payments\Enums\PaymentStatusEnum;
 use App\Modules\Payments\Events\PaymentCompleted;
 use App\Modules\Payments\Events\PaymentFailed;
 use App\Modules\Payments\Events\RefundCompleted;
@@ -176,5 +176,5 @@ class PaymentService
     }
 
 
-   
+
 }

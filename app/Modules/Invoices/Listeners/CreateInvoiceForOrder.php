@@ -24,10 +24,10 @@ class CreateInvoiceForOrder
     {
         Invoice::create([
             'user_id' => $event->order->user_id,
-            'order_id' => $event->order->id,
+            // 'payment_id' => $event->order->payment_id,
             'invoice_number' => 'INV-' . strtoupper(uniqid()),
             'amount' => $event->order->amount,
-            'currency_id' => $event->order->currency_id,
+            'currency_id' => $event->order->load('product')->product->currency_id,
             'status' => InvoiceStatus::PENDING->value,
         ]);
     }

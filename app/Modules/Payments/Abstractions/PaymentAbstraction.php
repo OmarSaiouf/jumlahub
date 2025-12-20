@@ -1,10 +1,9 @@
 <?php
 
-namespace App\Modules\Payment\Abstractions;
+namespace App\Modules\Payments\Abstractions;
 
 use Illuminate\Support\Facades\Http;
-use App\Modules\Payment\DTO\PaymentData;
-use App\Modules\Payment\DTO\PaymentResult;
+use App\Modules\Payments\DTO\PaymentResult;
 use App\Modules\Payments\Contracts\PaymentGatewayInterface;
 
 abstract class PaymentAbstraction implements PaymentGatewayInterface

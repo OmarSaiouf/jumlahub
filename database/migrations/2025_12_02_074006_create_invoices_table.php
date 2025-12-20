@@ -14,7 +14,12 @@ return new class extends Migration {
         Schema::create('invoices', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->foreignUuid('user_id')->constrained()->onDelete('cascade');
-            $table->foreignUuid('payment_id')->constrained();
+            $table->uuid('payment_id')->nullable();
+            $table->foreign('payment_id')
+                ->references('id')
+                ->on('payments')
+                ->nullOnDelete();
+
             $table->string('invoice_number');
             $table->decimal('amount', 10, 2);
             $table->foreignId('currency_id')->constrained();

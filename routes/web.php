@@ -7,6 +7,7 @@ use App\Core\Http\Controllers\PaymentController;
 use App\Core\Http\Controllers\PreferenceController;
 use App\Core\Http\Controllers\ProductController;
 use App\Core\Models\City;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('setLocaleAndCurrency')->group(function () {
@@ -21,9 +22,11 @@ Route::middleware('setLocaleAndCurrency')->group(function () {
     // for ajax in register form
     //------------
     Route::get('/countries/{country}/cities', function ($countryId) {
-        return City::where('country_id', $countryId)
-            ->select('id', 'name')
-            ->get();
+        return Cache::remember("cities_country_$countryId", 60 * 60 * 60, function () use ($countryId) {
+            return City::where('country_id', $countryId)
+                ->select('id', 'name')
+                ->get();
+        });
     });
     Route::post('/preferences', [PreferenceController::class, 'update'])
         ->name('preferences.update');
@@ -43,7 +46,7 @@ Route::middleware('setLocaleAndCurrency')->group(function () {
     //  payment
     //------------
     Route::prefix("payment")->middleware(['auth:web', 'verified'])->group(function () {
-        Route::get('/', [PaymentController::class, "show"])->name('payment.show');
+        Route::get('/', [PaymentController::class, "show"])->name('web.payment.show');
         Route::post("/pay", [PaymentController::class, "pay"])->name('payment.pay');
     });
     Route::post("/callback", [PaymentController::class, "callback"])->name('payment.callback');

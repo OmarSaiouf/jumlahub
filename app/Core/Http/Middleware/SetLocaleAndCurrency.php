@@ -4,6 +4,7 @@ namespace App\Core\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Symfony\Component\HttpFoundation\Response;
 
 class SetLocaleAndCurrency
@@ -20,6 +21,13 @@ class SetLocaleAndCurrency
 
         $currency = $request->cookie('currency', 'SYP');
         app()->instance('currency', $currency);
+
+        $country = $request->cookie('country', '1');
+        app()->instance('country', $country);
+
+        $city = $request->cookie('city', '1');
+        app()->instance('city', $city);
+        Log::info("Locale set to: $locale, Currency set to: $currency, Country set to: $country, City set to: $city");
         
         return $next($request);
     }

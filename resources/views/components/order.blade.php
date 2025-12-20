@@ -91,7 +91,7 @@
                 @elseif ($status === OrderStatus::PROCESSING->getValue())
                     <div class="flex flex-wrap items-center gap-3">
                         <p class="state-text text-sm text-slate-700 m-0">{{ $copy['processingText'] }}</p>
-                        <a href="{{ route('payment.show', ['order_id' => $order->id]) }}"
+                        <a href="{{ route('web.payment.show', ['order_id' => $order->id]) }}"
                             class="btn btn-primary btn-compact text-sm px-4 py-2">
                             <i class="fas fa-arrow-left"></i>
                             {{ $copy['cta'] }}

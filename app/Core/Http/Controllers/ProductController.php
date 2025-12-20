@@ -3,6 +3,8 @@
 namespace App\Core\Http\Controllers;
 
 use App\Core\Facades\PaymentProviderFacade;
+use App\Core\Models\Currency;
+use App\Core\Models\Language;
 use App\Modules\Products\Facades\ProductFacade;
 use Illuminate\Support\Facades\Auth;
 
@@ -36,6 +38,8 @@ class ProductController extends Controller
             'availableQuantity' => $availableQuantity,
             'progressPercent' => $progressPercent,
             'isOpen' => $isOpen,
+            'languages' => Language::select('id', 'name', 'code')->orderBy('name')->get(),
+            'currencies' => Currency::select('id', 'name', 'code')->orderBy('name')->get(),
             'userOrdersCount' => $userOrdersCount,
         ]);
     }

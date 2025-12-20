@@ -2,13 +2,14 @@
 
 namespace App\Modules\Payments\Gateways;
 
-use App\Modules\Payment\Abstractions\PaymentAbstraction;
-use App\Modules\Payment\DTO\PaymentData;
-use App\Modules\Payment\DTO\PaymentResult;
+use App\Modules\Payments\Abstractions\PaymentAbstraction;
+use App\Modules\Payments\DTO\PaymentData;
+use App\Modules\Payments\DTO\PaymentResult;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Request;
+
 use InvalidArgumentException;
 
 class PaypalGateway extends PaymentAbstraction
@@ -54,14 +55,14 @@ class PaypalGateway extends PaymentAbstraction
                 ],
             ],
             'application_context' => [
-                'return_url' => $this->baseUrl . $returnPath,
-                'cancel_url' => $this->baseUrl . $returnPath,
+                'return_url' => config('app.url') . $returnPath,
+                'cancel_url' => config('app.url') . $returnPath,
             ],
         ];
 
         try {
             // sendRequest assumed to be implemented in PaymentAbstraction
-            $response = $this->sendRequest('POST', $this->baseUrl . '/v2/checkout/orders', $paymentData);
+            $response = $this->sendRequest('POST', '/v2/checkout/orders', $paymentData);
 
             return $this->success([
                 'id' => $response['id'] ?? null,
@@ -100,7 +101,7 @@ class PaypalGateway extends PaymentAbstraction
         try {
             $response = $this->sendRequest(
                 'POST',
-                $this->baseUrl . "/v2/payments/captures/{$paymentId}/refund",
+                "/v2/payments/captures/{$paymentId}/refund",
                 $refundData
             );
 
@@ -133,7 +134,7 @@ class PaypalGateway extends PaymentAbstraction
         try {
             $response = $this->sendRequest(
                 'GET',
-                $this->baseUrl . "/v2/checkout/orders/{$paymentId}"
+                "/v2/checkout/orders/{$paymentId}"
             );
 
             return $this->success(
