@@ -50,7 +50,7 @@
                     <p class="muted">سنراجع الطلب ونقوم بتأكيده معك، مع اختيار وسيلة الدفع الأنسب لك.</p>
                 </div>
 
-                <form method="POST" action="{{ route('create.order') }}" class="order-form">
+                <form method="POST" action="{{ route('main.create.order') }}" class="order-form">
                     @csrf
                     <input type="hidden" name="product_id" value="{{ $product->id }}">
                     {{-- <input type="hidden" name="amount" data-field="amount"

@@ -15,6 +15,7 @@ class OrdersController extends Controller
     {
         $vaildated = $getMyOrdersRequest->validated();
         $orders = OrderFacade::allForUser(auth('web')->id(), null, $vaildated['limit'] ?? 30, $vaildated['offset'] ?? 0);
+        // dd($orders->get());
         return view('pages.orders', [
             'orders' => $orders,
             'languages' => Language::select('id', 'name', 'code')->orderBy('name')->get(),

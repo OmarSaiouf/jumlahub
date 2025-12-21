@@ -15,8 +15,8 @@ class FakeData extends Seeder
      */
     public function run(): void
     {
-        User::factory()->count(10)->create();
-        Category::factory()->count(12)->create();
-        Product::factory()->count(50)->create();
+        // User::factory()->count(10)->create();
+        // Category::factory()->count(12)->create();
+        Product::factory()->count(500)->create();
     }
 }

@@ -8,6 +8,8 @@ use App\Core\Models\Currency;
 use App\Core\Models\Language;
 use App\Core\Traits\FilterManager;
 use App\Modules\Orders\Models\Order;
+use App\Scopes\ActiveScope;
+use App\Scopes\FilterScope;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -67,6 +69,13 @@ class Product extends Model
         'discount' => 'integer',
         'is_quantity_finished' => 'boolean',
     ];
+
+
+    protected static function booted(): void
+    {
+        static::addGlobalScope(new FilterScope);
+        static::addGlobalScope(new ActiveScope);
+    }
 
     public function category(): BelongsTo
     {
