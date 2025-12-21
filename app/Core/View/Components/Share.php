@@ -6,12 +6,12 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class Toast extends Component
+class Share extends Component
 {
     /**
      * Create a new component instance.
      */
-    public function __construct(public array $messages)
+    public function __construct(public $id)
     {
         //
     }
@@ -21,6 +21,6 @@ class Toast extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.toast');
+        return view('components.share');
     }
 }

@@ -14,14 +14,10 @@ class HomeController extends Controller
     {
 
         $filters = [
-            "currency_id" => Currency::where('code', app('currency'))->first()?->id,
-            "language_id" => Language::getFromCode(app()->getLocale())?->id,
-            "city_id" => auth('web')->user()->city_id ?? "",
-            "country_id" => auth('web')->user()->country_id ?? "",
-            // ""
+            "language_id" => Language::where('code', app()->getLocale())->first()->id,
         ];
         // dd($filters);
-        $categories = CategoryFacade::all(filters: $filters, limit: 12)->orderBy('name', 'asc')->get();
+        $categories = CategoryFacade::all(filters: $filters, limit: 12)->orderBy('created_at', 'asc')->get();
         $products = ProductFacade::all(filters: $filters)->orderBy('created_at', 'asc')->get();
 
         return view('index', [

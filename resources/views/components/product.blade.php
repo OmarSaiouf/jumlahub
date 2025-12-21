@@ -30,7 +30,6 @@
         </div>
 
         <div class="hero-actions" style="margin-top: 12px;">
-
             <button type="button" class="btn btn-primary" data-modal-open="{{ 'create-order-' . $product->id }}">
                 <i class="fas fa-cart-plus"></i>
                 إنشاء طلب جملة
@@ -38,10 +37,12 @@
 
 
 
-            <a href="{{ route('product.show', ['id' => $product->id]) }}" class="btn btn-ghost">
+            <a href="{{ route('main.product.show', ['id' => $product->id]) }}" class="btn btn-ghost">
                 <i class="fas fa-eye"></i>
                 تفاصيل إضافية
             </a>
+
+            {{-- <x-share :id="$product->id" class="btn btn-primary" /> --}}
 
         </div>
     </div>

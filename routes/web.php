@@ -1,5 +1,6 @@
 <?php
 
+use App\Core\Http\Controllers\CategoryController;
 use App\Core\Http\Controllers\DashboardController;
 use App\Core\Http\Controllers\HomeController;
 use App\Core\Http\Controllers\OrdersController;
@@ -15,7 +16,7 @@ Route::middleware('setLocaleAndCurrency')->group(function () {
     //------------
     //  home
     //------------
-    Route::get('/', [HomeController::class, 'index']);
+    Route::get('/', [HomeController::class, 'index'])->name('home');
 
     //------------
     //  cities
@@ -37,7 +38,7 @@ Route::middleware('setLocaleAndCurrency')->group(function () {
     //------------
     Route::prefix("orders")->middleware(['auth:web', 'verified'])->group(function () {
         Route::get('/', [OrdersController::class, "myOrder"])->name('my.order');
-        Route::post("/createOrder", [OrdersController::class, "store"])->name('create.order');
+        Route::post("/createOrder", [OrdersController::class, "store"])->name('main.create.order');
     });
 
 
@@ -51,12 +52,18 @@ Route::middleware('setLocaleAndCurrency')->group(function () {
     });
     Route::post("/callback", [PaymentController::class, "callback"])->name('payment.callback');
 
+    // ------------
+    // category
+    // ------------
+    Route::prefix('category')->group(function () {
+        Route::get('/{id}', [CategoryController::class, 'show'])->name('main.category.show');
+    });
 
     //------------
     //  product
     //------------
     Route::prefix('product')->group(function () {
-        Route::get('/{id}', [ProductController::class, 'show'])->name('product.show');
+        Route::get('/{id}', [ProductController::class, 'show'])->name('main.product.show');
     });
 
 

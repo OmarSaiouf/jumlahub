@@ -12,7 +12,10 @@ class CategoryService
         if ($filters != null) {
             $query->filter($filters);  // returns Builder
         }
-        $query->where('language_id', $filters['language_id'] ?? null);
+        if (isset($filters['language_id'])) {
+            $query->where('language_id', $filters['language_id']);
+        }
+        
         $query->limit($limit)->offset($offset);
 
         return $query;
@@ -21,5 +24,11 @@ class CategoryService
     public function getById(string $id)
     {
         return Category::find($id);
+    }
+
+    public function getByIdWithProducts(string $id)
+    {
+        return Category::with(['products', 'products.currency', 'products.language', 'products.country', 'products.city'])
+        ->find($id);
     }
 }

@@ -98,7 +98,7 @@
                     </div>
                 @endguest
 
-                <form method="POST" action="{{ route('create.order') }}" class="create-order">
+                <form method="POST" action="{{ route('main.create.order') }}" class="create-order">
                     @csrf
                     <input type="hidden" name="product_id" value="{{ $product->id }}">
 
@@ -140,6 +140,8 @@
                     </div>
 
                     <div class="hero-actions" style="margin-top: 4px; justify-content: flex-end;">
+                        <x-share :id="$product->id" class="btn btn-primary" />
+                            
                         <button type="submit" class="btn btn-primary" {{ $canOrder ? '' : 'disabled' }}>
                             <i class="fas fa-paper-plane"></i>
                             إرسال الطلب
@@ -150,6 +152,7 @@
                         </a>
                     </div>
                 </form>
+
             </div>
 
             <div class="user-orders">

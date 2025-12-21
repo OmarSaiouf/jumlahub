@@ -6,6 +6,8 @@ use App\Core\Enums\OrderStatus;
 use App\Modules\Orders\Events\OrderCreated;
 use App\Modules\Orders\Models\Order;
 use App\Modules\Products\Facades\ProductFacade;
+use App\Scopes\ActiveScope;
+use App\Scopes\FilterScope;
 use Exception;
 use Illuminate\Support\Facades\DB;
 
@@ -21,8 +23,12 @@ class OrderService
             $filters = array_merge($filter);
         }
         $query = $this->get($filters)
+            // ->where('user_id', $user_id)
             ->with([
                 'product:id,name,image,currency_id',
+                'product' => function ($q) {
+                    $q->withoutGlobalScopes([FilterScope::class, ActiveScope::class]);
+                },
                 'product.currency:id,code',
             ])
             ->limit($limit)
@@ -74,7 +80,9 @@ class OrderService
     {
         return Order::with([
             'product.currency:id,code',
-            'product',
+            'product' => function ($q) {
+                $q->withoutGlobalScopes([FilterScope::class, ActiveScope::class]);
+            },
             'paymentProvider:id,name,code',
         ])->findOrFail($orderId);
     }
