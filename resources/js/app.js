@@ -1,55 +1,75 @@
 import "./bootstrap";
 
-document.getElementById("country_id").addEventListener("change", function () {
-    const countryId = this.value;
+document.addEventListener("DOMContentLoaded", function () {
+    /* ===============================
+       Country → City Ajax
+    =============================== */
+    const countrySelect = document.getElementById("country_id");
     const citySelect = document.getElementById("city_id");
 
-    citySelect.innerHTML = '<option value="">جاري التحميل...</option>';
+    if (countrySelect && citySelect) {
+        countrySelect.addEventListener("change", function () {
+            const countryId = this.value;
 
-    if (!countryId) {
-        citySelect.innerHTML = '<option value="">اختر المدينة</option>';
-        return;
-    }
+            citySelect.innerHTML = '<option value="">جاري التحميل...</option>';
 
-    fetch(`/countries/${countryId}/cities`)
-        .then((response) => response.json())
-        .then((cities) => {
-            citySelect.innerHTML = '<option value="">اختر المدينة</option>';
-
-            cities.forEach((city) => {
-                const option = document.createElement("option");
-                option.value = city.id;
-                option.textContent = city.name;
-                citySelect.appendChild(option);
-            });
-        })
-        .catch(() => {
-            citySelect.innerHTML = '<option value="">حدث خطأ</option>';
-        });
-
-    citySelect.submit();
-});
-
-document.addEventListener("DOMContentLoaded", function () {
-    const oldCountry = "{{ old('country_id') }}";
-    const oldCity = "{{ old('city_id') }}";
-
-    if (oldCountry) {
-        fetch(`/countries/${oldCountry}/cities`)
-            .then((res) => res.json())
-            .then((cities) => {
-                const citySelect = document.getElementById("city_id");
+            if (!countryId) {
                 citySelect.innerHTML = '<option value="">اختر المدينة</option>';
+                return;
+            }
 
-                cities.forEach((city) => {
-                    const option = document.createElement("option");
-                    option.value = city.id;
-                    option.textContent = city.name;
-                    if (city.id == oldCity) {
-                        option.selected = true;
-                    }
-                    citySelect.appendChild(option);
+            fetch(`/countries/${countryId}/cities`)
+                .then((res) => res.json())
+                .then((cities) => {
+                    citySelect.innerHTML =
+                        '<option value="">اختر المدينة</option>';
+
+                    cities.forEach((city) => {
+                        const option = document.createElement("option");
+                        option.value = city.id;
+                        option.textContent = city.name;
+                        citySelect.appendChild(option);
+                    });
+                })
+                .catch(() => {
+                    citySelect.innerHTML = '<option value="">حدث خطأ</option>';
                 });
-            });
+        });
     }
+
+    /* ===============================
+       Filters & Search
+    =============================== */
+    const searchForm = document.querySelector(".search");
+    const searchInput = document.querySelector('input[name="q"]');
+    const statusSelect = document.querySelector('select[name="status"]');
+    const sortSelect = document.querySelector('select[name="sort"]');
+
+    if (!searchForm || !searchInput || !statusSelect || !sortSelect) return;
+
+    function updateQuery() {
+        const url = new URL(window.location.href);
+
+        searchInput.value.trim()
+            ? url.searchParams.set("q", searchInput.value.trim())
+            : url.searchParams.delete("q");
+
+        statusSelect.value
+            ? url.searchParams.set("status", statusSelect.value)
+            : url.searchParams.delete("status");
+
+        sortSelect.value
+            ? url.searchParams.set("sort", sortSelect.value)
+            : url.searchParams.delete("sort");
+
+        window.location.href = url.toString();
+    }
+
+    statusSelect.addEventListener("change", updateQuery);
+    sortSelect.addEventListener("change", updateQuery);
+
+    searchForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        updateQuery();
+    });
 });

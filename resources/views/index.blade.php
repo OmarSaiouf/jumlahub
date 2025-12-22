@@ -27,16 +27,18 @@
                         <i class="fas fa-boxes-stacked"></i>
                         استعرض المنتجات
                     </a>
-                    @if (Route::has('register'))
+                    @if (!Auth::check())
                         <a href="{{ route('register') }}" class="btn btn-secondary">
                             <i class="fas fa-user-plus"></i>
                             تسجيل
                         </a>
                     @endif
-                    <a href="{{ url('/orders') }}" class="btn btn-ghost">
-                        <i class="fas fa-list-check"></i>
-                        تتبع الطلبات
-                    </a>
+                    @if (Auth::check())
+                        <a href="{{ url('/orders') }}" class="btn btn-ghost">
+                            <i class="fas fa-list-check"></i>
+                            تتبع الطلبات
+                        </a>
+                    @endif
                 </div>
                 <ul class="feature-list">
                     <li><i class="fas fa-shield-check"></i> توثيق الموردين وضمان الجودة قبل اعتمادهم</li>
@@ -68,22 +70,25 @@
         </section>
 
         <section class="toolbar">
-            <form action="{{ url('/products') }}" method="GET" class="search">
+            <form method="GET" class="search">
                 <input type="search" name="q" value="{{ request('q') }}"
                     placeholder="ابحث حسب اسم المنتج أو التصنيف..." aria-label="بحث عام">
                 <i class="fas fa-search"></i>
             </form>
-            <select name="status" aria-label="تصفية حسب الحالة">
+            <select name="status">
                 <option value="">كل الحالات</option>
-                <option value="ready">جاهز للشحن</option>
-                <option value="open">متاح للحجز</option>
-                <option value="limited">عرض محدود</option>
+                @foreach ($filterStatuses as $key => $value)
+                    <option value="{{ $key }}" @selected(request('status') === $key)>{{ $value }}</option>
+                @endforeach
+
             </select>
+
             <select name="sort" aria-label="ترتيب حسب الأحدث">
-                <option value="recent">الأحدث أولاً</option>
-                <option value="popular">الأكثر طلباً</option>
-                <option value="price-asc">السعر من الأقل للأعلى</option>
-                <option value="price-desc">السعر من الأعلى للأقل</option>
+                <option value="">ترتيب افتراضي</option>
+                @foreach ($filterSorts as $key => $value)
+                    <option value="{{ $key }}" @selected(request('sort') === $key)>{{ $value }}</option>
+                @endforeach
+
             </select>
         </section>
 

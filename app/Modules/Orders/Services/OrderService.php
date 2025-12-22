@@ -3,11 +3,12 @@
 namespace App\Modules\Orders\Services;
 
 use App\Core\Enums\OrderStatus;
+use App\Core\Scopes\ActiveScope;
+use App\Core\Scopes\FilterScope;
 use App\Modules\Orders\Events\OrderCreated;
 use App\Modules\Orders\Models\Order;
 use App\Modules\Products\Facades\ProductFacade;
-use App\Scopes\ActiveScope;
-use App\Scopes\FilterScope;
+
 use Exception;
 use Illuminate\Support\Facades\DB;
 

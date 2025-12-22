@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Scopes;
+namespace App\Core\Scopes;
 
 use App\Core\Models\City;
 use App\Core\Models\Country;
