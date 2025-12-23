@@ -1,0 +1,56 @@
+<?php
+
+return [
+    'payment' => [
+        'title' => 'Ödemeyi Tamamla | JumlaHub',
+        'title_short' => 'Ödemeyi Tamamla',
+        'review_via' => 'Siparişinizi gözden geçirin ve ödeme sağlayıcısı :provider ile tamamlayın.',
+        'method_title' => 'Ödeme Yöntemi',
+        'secure' => 'Güvenli işlem',
+        'provider_label' => 'Sağlayıcı',
+        'amount_due' => 'Ödenecek Tutar',
+        'order_status' => 'Sipariş Durumu',
+        'info_banner' => 'Ödemeyi tamamlamadan önce bilgileri doğrulayın. Sipariş detayları ekranından sipariş sayfasına dönebilirsiniz.',
+        'steps_title' => 'Ödeme Adımları',
+        'steps' => [
+            'check' => 'Sipariş toplamını ve sağlayıcıyı onaylayın.',
+            'click' => 'Ağ geçidine gitmek için ödeme tamamla butonuna tıklayın.',
+            'complete' => 'İşlemi tamamlayın ve siparişi takip etmek için geri dönün.',
+        ],
+        'pay_now' => 'Şimdi Öde',
+        'order_label' => 'Sipariş #:id',
+    ],
+
+    'orders' => [
+        'title' => 'Siparişler',
+        'muted' => 'Toptan siparişlerinizdeki son hareketler',
+        'no_orders' => 'Sipariş bulunamadı.',
+    ],
+
+    'product' => [
+        'title_template' => 'JumlaHub | :name',
+        'active_badge' => 'Aktif İlan',
+        'discount' => 'İndirim',
+        'min_order_label' => 'Minimum Sipariş',
+        'shipping_expected' => 'Tahmini kargo: 5-7 iş günü.',
+        'about_title' => 'Bu Ürün Hakkında',
+        'description_fallback' => 'Bu ürün için henüz açıklama eklenmemiş. Detaylar için bizimle iletişime geçin veya yukarıdaki özellikleri kontrol edin.',
+        'order_title' => 'Satın Alma Siparişi Ver',
+        'not_available' => 'Bu ürün şu anda stok veya ilan durumu nedeniyle siparişe uygun değil.',
+        'guest_note' => 'Satın alma siparişi göndermek ve miktarı onaylamak için lütfen giriş yapın.',
+        'quantity_label' => 'Talep edilen miktar',
+        'quantity_placeholder' => 'Talep edilen miktarı girin',
+        'status_open' => 'Siparişe Açık',
+        'status_completed' => 'Sipariş Tamamlandı',
+        'target_quantity' => 'Hedef Miktar',
+        'sold' => 'Satıldı',
+        'remaining' => 'Kalan',
+        'choose_provider' => 'Bir ödeme sağlayıcısı seçin',
+        'no_providers' => 'Şu anda ödeme yöntemi yok',
+        'order_total_label' => 'Tahmini Sipariş Toplamı',
+        'secure_payment_note' => 'Güvenli ödeme — bilgileriniz şifrelenir.',
+        'send_order' => 'Siparişi Gönder',
+        'view_orders' => 'Siparişleri Görüntüle',
+        'user_orders_count' => 'Bu ürün için daha önce :count siparişiniz var.',
+    ],
+];

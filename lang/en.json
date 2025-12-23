@@ -1,0 +1,23 @@
+{
+    "unpaid": "Unpaid",
+    "paid": "Paid",
+    "overdue": "Overdue",
+    "pending": "Pending",
+    "processing": "Processing",
+    "cancelled": "Cancelled",
+    "refunded": "Refunded",
+    "completed": "Completed",
+
+    "admin": "Administrator",
+    "user": "User",
+    "Administrator": "Administrator",
+
+    "available": "Available",
+    "finished": "Finished",
+    "discount": "Discount",
+
+    "price_asc": "Price: Low to High",
+    "price_desc": "Price: High to Low",
+    "newest": "Newest",
+    "oldest": "Oldest"
+}

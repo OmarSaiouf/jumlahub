@@ -1,0 +1,23 @@
+{
+    "unpaid": "غير مدفوع",
+    "paid": "مدفوع",
+    "overdue": "متأخر",
+    "pending": "قيد الانتظار",
+    "processing": "قيد المعالجة",
+    "cancelled": "ملغي",
+    "refunded": "مسترد",
+    "completed": "مكتمل",
+
+    "admin": "مسؤول",
+    "user": "مستخدم",
+    "Administrator": "المسؤول",
+
+    "available": "متوفر",
+    "finished": "نفد",
+    "discount": "خصم",
+
+    "price_asc": "السعر: من الأقل للأعلى",
+    "price_desc": "السعر: من الأعلى للأقل",
+    "newest": "الأحدث",
+    "oldest": "الأقدم"
+}

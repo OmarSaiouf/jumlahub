@@ -1,0 +1,14 @@
+<?php
+
+namespace App\Modules\Orders\Facades;
+
+use Illuminate\Support\Facades\Facade;
+
+class OrderFacade extends Facade
+{
+
+    protected static function getFacadeAccessor()
+    {
+        return 'order.service';
+    }
+}
