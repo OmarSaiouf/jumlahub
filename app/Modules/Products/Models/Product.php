@@ -10,11 +10,13 @@ use App\Core\Scopes\ActiveScope;
 use App\Core\Scopes\FilterScope;
 use App\Core\Traits\FilterManager;
 use App\Modules\Orders\Models\Order;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Facades\Storage;
 
 class Product extends Model
 {
@@ -113,5 +115,15 @@ class Product extends Model
     protected static function newFactory()
     {
         return \Database\Factories\ProductFactory::new();
+    }
+
+
+    protected function image(): Attribute
+    {
+        return Attribute::make(
+            get: function ($v) {
+                return $v ? Storage::disk(name: 'products')->url($v) : null;
+            }
+        );
     }
 }

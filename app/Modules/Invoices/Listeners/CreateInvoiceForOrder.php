@@ -3,7 +3,9 @@
 namespace App\Modules\Invoices\Listeners;
 
 use App\Core\Enums\InvoiceStatus;
+use App\Core\View\Components\CreateOrder;
 use App\Modules\Invoices\Models\Invoice;
+use App\Modules\Orders\Events\OrderCanceled;
 use App\Modules\Orders\Events\OrderCreated;
 use App\Modules\Payments\Events\PaymentCompleted;
 
@@ -29,6 +31,7 @@ class CreateInvoiceForOrder
             'amount' => $event->order->amount,
             'currency_id' => $event->order->load('product')->product->currency_id,
             'status' => InvoiceStatus::PENDING->value,
+
         ]);
     }
 }

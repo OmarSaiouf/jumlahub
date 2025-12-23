@@ -18,6 +18,8 @@ use App\Core\Models\Language;
 use App\Modules\Invoices\Models\Invoice;
 use App\Modules\Orders\Models\Order;
 use App\Modules\Payments\Models\Payment;
+use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Support\Facades\Storage;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -109,5 +111,13 @@ class User extends Authenticatable implements MustVerifyEmail
     public function invoices(): HasMany
     {
         return $this->hasMany(Invoice::class);
+    }
+    protected function image(): Attribute
+    {
+        return Attribute::make(
+            get: function ($v) {
+                return $v ? Storage::disk('users')->url($v) : null;
+            }
+        );
     }
 }

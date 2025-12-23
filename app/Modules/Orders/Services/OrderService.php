@@ -5,6 +5,7 @@ namespace App\Modules\Orders\Services;
 use App\Core\Enums\OrderStatus;
 use App\Core\Scopes\ActiveScope;
 use App\Core\Scopes\FilterScope;
+use App\Modules\Orders\Events\OrderCanceled;
 use App\Modules\Orders\Events\OrderCreated;
 use App\Modules\Orders\Models\Order;
 use App\Modules\Products\Facades\ProductFacade;
@@ -86,6 +87,19 @@ class OrderService
             },
             'paymentProvider:id,name,code',
         ])->findOrFail($orderId);
+    }
+
+    public function cancel($id)
+    {
+        $order = $this->find($id);
+
+        $order->update([
+            "status" => OrderStatus::CANCELLED->getValue()
+        ]);
+
+        OrderCanceled::dispatch($order);
+
+        return true;
     }
 
     private function get(array|null $filters = null)

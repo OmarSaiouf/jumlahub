@@ -53,6 +53,7 @@ return [
             'defaultTitle' => 'Güncel sipariş durumu',
             'cta' => 'Ödemeye devam et',
             'details' => 'Sipariş detayları',
+            "cancel" => "Siparişi iptal et"
         ],
     ],
 

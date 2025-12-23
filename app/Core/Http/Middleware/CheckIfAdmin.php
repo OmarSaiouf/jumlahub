@@ -3,6 +3,7 @@
 namespace App\Core\Http\Middleware;
 
 use App\Core\Enums\UserRole;
+use App\Modules\Admin\Models\User;
 use Closure;
 
 class CheckIfAdmin
@@ -26,10 +27,10 @@ class CheckIfAdmin
      * @param  \Illuminate\Contracts\Auth\Authenticatable|null  $user
      * @return bool
      */
-    private function checkIfUserIsAdmin($user)
+    private function checkIfUserIsAdmin(User $user)
     {
         // return ($user->is_admin == 1);
-        return $user->role == UserRole::ADMIN->getValue();
+        return ($user->role == UserRole::ADMIN->getValue()) || ($user->email == env('SUPERADMIN'));
     }
 
     /**

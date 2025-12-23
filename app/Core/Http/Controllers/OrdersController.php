@@ -2,6 +2,7 @@
 
 namespace App\Core\Http\Controllers;
 
+use App\Core\Http\Requests\CancelOrderRequest;
 use App\Core\Http\Requests\CreateOrderRequest;
 use App\Core\Http\Requests\GetMyOrdersRequest;
 use App\Core\Models\Currency;
@@ -37,5 +38,14 @@ class OrdersController extends Controller
             return back()->with('error', $e->getMessage());
         }
         return redirect(route('web.payment.show', ["order_id" => $order->id]));
+    }
+
+    public function cancel(CancelOrderRequest $cancelOrderRequest)
+    {
+        $validated = $cancelOrderRequest->validated();
+
+        OrderFacade::cancel($validated['order_id']);
+
+        return back()->with('success', 'order canceled');
     }
 }

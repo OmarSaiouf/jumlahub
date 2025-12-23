@@ -55,7 +55,7 @@ class UserCrudController extends CrudController
         CRUD::column('two_factor_recovery_codes')->remove();
         CRUD::column('two_factor_confirmed_at')->remove();
 
-        CRUD::column('image')->type('image')->disk('public');
+        CRUD::column('image')->type('image')->disk('users');
         CRUD::column('name');
         CRUD::column('email');
         CRUD::column('phone');
@@ -199,7 +199,7 @@ class UserCrudController extends CrudController
             'type' => 'upload',
             'label' => __('Image'),
             'withFiles' => true,
-            'disk' => 'public',
+            'disk' => 'users',
 
         ]);
         /**

@@ -52,6 +52,12 @@ class ProductCrudController extends CrudController
         $this->crud->addClause('where', 'city_id', app('city'));
 
         CRUD::column([
+            'name' => 'image',
+            'label' => __('Image'),
+            'type' => 'image',
+            'disk' => 'products'
+        ]);
+        CRUD::column([
             'name' => 'name',
             'label' => __('name'),
         ]);
@@ -246,6 +252,13 @@ class ProductCrudController extends CrudController
             'entity' => 'city',
             'model' => City::class,
             'attribute' => 'name',
+        ]);
+        CRUD::field([
+            'name' => 'image',
+            'label' => __('Image'),
+            'type' => 'upload',
+            'withFiles' => true,
+            'disk' => 'products'
         ]);
 
 

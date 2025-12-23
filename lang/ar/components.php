@@ -42,6 +42,7 @@ return [
             'completed' => 'تم التسليم',
             'cancelled' => 'تم الإلغاء',
             'refunded' => 'تم الاسترداد',
+            "cancel" => "إلغاء الطلب"
         ],
         'copy' => [
             'quantity' => 'الكمية:',

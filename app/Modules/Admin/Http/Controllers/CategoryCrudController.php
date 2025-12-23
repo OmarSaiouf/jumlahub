@@ -75,7 +75,7 @@ class CategoryCrudController extends CrudController
             'name' => 'image',
             'type' => 'image',
             'label' => __('Image'),
-            'disk' => 'public',
+            'disk' => 'categories',
 
         ]);
 
@@ -126,7 +126,7 @@ class CategoryCrudController extends CrudController
             'name' => 'image',
             'type' => 'upload',
             'label' => __('Image'),
-            'disk' => 'public',
+            'disk' => 'categories',
             'withFiles' => true,
         ]);
 

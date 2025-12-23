@@ -43,7 +43,7 @@
         'processingText' => __('components.order.copy.processingText'),
         'defaultTitle' => __('components.order.copy.defaultTitle'),
         'cta' => __('components.order.copy.cta'),
-        'details' => __('components.order.copy.details'),
+        'details' => __('components.order.copy.cancel'),
     ];
 
     $status = $order->status;
@@ -105,13 +105,17 @@
                     @endif
                 </div>
             </div>
-
-            <div class="order-actions flex flex-col gap-2 items-center justify-start">
-                <a href="{{ route('my.order') }}" class="btn btn-secondary">
-                    <i class="fas fa-eye"></i>
-                    {{ $copy['details'] }}
-                </a>
-            </div>
+            @if ($status != OrderStatus::CANCELLED->getValue() && $status != OrderStatus::PENDING->getValue())
+                <div class="order-actions flex flex-col gap-2 items-center justify-start">
+                    <form action="{{ route('main.cancel.order', ['order_id' => $order->id]) }}" method="post">
+                        @csrf
+                        <button type="submit" class="btn btn-compact ">
+                            <i class="fas fa-cancel"></i>
+                            {{ $copy['details'] }}
+                        </button>
+                    </form>
+                </div>
+            @endif
         </div>
 
     </div>

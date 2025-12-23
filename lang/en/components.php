@@ -53,6 +53,7 @@ return [
             'defaultTitle' => 'Current order status',
             'cta' => 'Continue to payment',
             'details' => 'Order details',
+            "cancel" => "Cancel Order"
         ],
     ],
 
