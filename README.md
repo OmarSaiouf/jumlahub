@@ -1,59 +1,172 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+﻿Jumlahub  متجر الجملة التشاركي
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## ملخص المشروع (بالعربية)
 
-## About Laravel
+Jumlahub هو منصة سوق تسمح للتجار بعرض منتجات جملة بكميات كبيرة، ويسمح للمشترين بطلب كميات محددة من كل منتج. عندما تتجمع الطلبات وتصل إلى الكمية الإجمالية المطلوبة، يُغلق المنتج ويُعتبر مكتملًا ويتم إرسال الكمية كاملة.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+**مزايا الرئيسية:**
+- عرض منتجات بالجملة بكميات كبيرة
+- طلب كميات جزئية من كل منتج حتى اكتمال الكمية الإجمالية
+- إدارة بوابات الدفع وتكاملها مع واجهة الإدارة
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## التشغيل والتهيئة (خطوات سريعة)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+1. تثبيت التبعيات:
 
-## Learning Laravel
+```bash
+composer install
+```
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+2. إعداد البيئة: انسخ .env ثم حرّر معلومات قاعدة البيانات والأوراق الأخرى:
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+```bash
+copy .env.example .env
+php artisan key:generate
+```
 
-## Laravel Sponsors
+3. ترحيل قاعدة البيانات وملء البيانات الابتدائية:
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+```bash
+php artisan migrate --seed
+```
 
-### Premium Partners
+4. (اختياري) إضافة بيانات وهمية:
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+```bash
+php artisan db:seed --class=FakeData
+```
 
-## Contributing
+5. إنشاء مستخدم مدير (لوحة الإدارة على `/admin`):
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```bash
+php artisan backpack:user
+```
 
-## Code of Conduct
+6. بعد تشغيل التطبيق تأكد من ضبط `APP_URL` ثم:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```bash
+php artisan storage:link
+php artisan basset:install
+```
 
-## Security Vulnerabilities
+## لماذا بُني هذا المشروع
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+هذا مشروع نهائي لدورة تدريب Laravel في مبادرة "ألف مبرمج" التابعة لمداد التعليمية. المشروع مفتوح المصدر تحت رخصة MIT.
 
-## License
+## المطوّر
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+**‍ Omar Saiouf**
+
+- LinkedIn: https://www.linkedin.com/in/omarsaiouf
+- GitHub: https://github.com/OmarSaiouf
+- Telegram: https://t.me/omarsaiouf
+
+---
+
+## Payment / الدفع  طريقة إضافة بوابات جديدة (محدث، تتطابق مع الكود)
+
+في هذا المشروع، لإضافة بوابة دفع جديدة يجب إنشاء كلاس داخل `app/Modules/Payments/Gateways` يرث من `App\Modules\Payments\Abstractions\PaymentAbstraction` ويتبع العقود والـ DTOs المستخدمة (`App\Modules\Payments\DTO\PaymentData` و`App\Modules\Payments\DTO\PaymentResult`). إعدادات الاتصال (config) تُدار من لوحة الإدارة وتُخزن في جدول `payment_providers`، ثم تُمرّر تلقائيًا إلى كلاس البوابة عند التحميل.
+
+1. هيكلية العمل الموصى بها:
+   - مجلد البوابات: `app/Modules/Payments/Gateways/`
+   - فئة أساسية/مجرّدة: `App\Modules\Payments\Abstractions\PaymentAbstraction`.
+   - DTOs: `App\Modules\Payments\DTO\PaymentData`, `App\Modules\Payments\DTO\PaymentResult`.
+   - جدول إعدادات: `payment_providers` يحتوي على الأعمدة `id, name, class, config (json), active`.
+
+2. سلوك النظام:
+   - يقوم النظام بقراءة السجلات النشطة (`active = 1`) من جدول `payment_providers` عند الحاجة أو عند تهيئة خدمة الدفع.
+   - قيمة العمود `class` يجب أن تكون اسم الفئة الكامل (FQCN) مثل `App\\Modules\\Payments\\Gateways\\PaypalGateway`.
+   - قيمة `config` هي JSON تُخزن من لوحة الإدارة وتحتوي مفاتيح التي يتوقعها الكلاس (مثال مفاتيح PayPal موجودة في الكود: `live_url`, `test_url`, `client_id`, `secret`, `cache_ttl`, `is_test`, `webhook_id`).
+   - عند التحميل، يقوم التطبيق بعمل `app()->make($class, ['config' => $config])` لتهيئة الكلاس وتمرير الإعدادات.
+
+3. مثال للكلاس متوافق مع الكود الفعلي (موجز):
+
+```php
+namespace App\Modules\Payments\Gateways;
+
+use App\Modules\Payments\Abstractions\PaymentAbstraction;
+use App\Modules\Payments\DTO\PaymentData;
+use App\Modules\Payments\DTO\PaymentResult;
+use Illuminate\Http\Request;
+
+class PaypalGateway extends PaymentAbstraction
+{
+    public function __construct(public array $config)
+    {
+        parent::__construct($config);
+        // تهيئة clientId, clientSecret, headers, ... كما في الكود
+    }
+
+    public function pay(PaymentData $data): PaymentResult
+    {
+        // تنفيذ عملية الدفع، يرجع PaymentResult
+    }
+
+    public function refund(string $paymentId, float $amount): PaymentResult
+    {
+        // تنفيذ عملية استرداد
+    }
+
+    public function getStatus(string $paymentId): PaymentResult
+    {
+        // جلب حالة الدفع
+    }
+
+    public function handleCallback(Request $request): PaymentResult
+    {
+        // معالجة webhooks/callbacks
+    }
+
+    public function handleReturn(Request $request): PaymentResult
+    {
+        // معالجة رجوع المستخدم بعد الدفع
+    }
+}
+```
+
+4. خطوات إضافة بوابة جديدة (مطابقة للكود):
+   1. أنشئ فئة جديدة في `app/Modules/Payments/Gateways/` وارث `App\Modules\Payments\Abstractions\PaymentAbstraction`، وطبق الدوال المطلوبة (`pay`, `refund`, `getStatus`, `handleCallback`, `handleReturn`).
+   2. من لوحة الإدارة أضف سجلًا جديدًا إلى `payment_providers`، املأ `class` باسم الفئة الكامل وضع JSON الإعدادات في `config`، واضبط `active = 1`.
+   3. عند الحفظ سيُحمَّل المزود تلقائيًا لأن التطبيق يقرأ المزودات النشطة ديناميكيًا.
+   4. اختبر البوابة في بيئة sandbox وتأكد من أن webhooks ممررة ومُعالجة بشكل صحيح.
+
+5. مثال إدخال بيانات عبر SQL (يتضمن المفاتيح التي يتوقعها `PaypalGateway` في الكود):
+
+```sql
+INSERT INTO payment_providers (name, class, config, active) VALUES (
+  'Paypal',
+  'App\\Modules\\Payments\\Gateways\\PaypalGateway',
+  '{"live_url":"https://api.paypal.com","test_url":"https://api.sandbox.paypal.com","client_id":"xxxx","secret":"yyyy","cache_ttl":300,"is_test":true,"webhook_id":"wh_abc123"}',
+  1
+);
+```
+
+6. ملاحظات أمنية وتشغيلية:
+   - لا تحفظ مفاتيح حسّاسة في مستودع الكود؛ استخدم لوحة الإدارة أو خزنة أسرار.
+   - تأكد أن `PaymentAbstraction` يوفر تسجيلًا مناسبًا والتحقق من الأخطاء.
+   - اضبط عناوين الـ webhooks في إعدادات كل مزود داخل لوحة الإدارة.
+
+---
+
+## English  Project Summary (concise)
+
+Jumlahub is a wholesale-collaborative marketplace where merchants list bulk products and buyers place partial orders. When cumulative orders reach the target quantity the product is closed and the shipment is prepared.
+
+See the Arabic section above for setup commands and payment integration notes.
+
+## Türkçe  Kısa Açıklama
+
+Jumlahub, tedarikçilerin büyük miktarda ürün listelediği ve alıcıların her ürün için belirli miktarlar sipariş ettiği toptan pazar yeridir. Toplam sipariş miktarı hedefe ulaşınca ürün kapatılır ve gönderim yapılır.
+
+---
+
+## الرخصة
+
+مشروع مفتوح المصدر بموجب رخصة MIT.
+
+---
+
+## ما التالي؟
+
+- أستطيع إضافة مثال عملي كامل للفئة `ExampleGateway` داخل `app/Modules/Payments/Gateways` وSeeder لملء سجل في `payment_providers` وتجربة webhooks. هل تريدني أضيف هذا الآن?
+
