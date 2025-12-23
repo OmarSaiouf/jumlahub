@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="{{ app()->getLocale() }}" dir="{{ app()->getLocale() == 'ar' ? 'rtl' : 'ltr' }}">
 
 <head>
     <meta charset="utf-8">
@@ -24,7 +24,7 @@
             <div class="alert"
                 style="border-color: rgba(239,68,68,0.35); background: rgba(239,68,68,0.08); color: #991b1b;">
                 <div>
-                    <strong>حدثت بعض الأخطاء:</strong>
+                    <strong>{{ __('layout.errors.heading') }}</strong>
                     <ul style="margin: 8px 16px 0 0; padding: 0; list-style: disc;">
                         @foreach ($errors->all() as $error)
                             <li>{{ $error }}</li>

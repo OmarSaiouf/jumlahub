@@ -23,7 +23,7 @@
 
 
                     <div class="flex-1">
-                        <h4 class="font-bold text-lg tracking-tight">{{ __('نجاح') }}</h4>
+                        <h4 class="font-bold text-lg tracking-tight">{{ __('components.toast.success') }}</h4>
                         <p class="mt-1 text-green-700 leading-relaxed">{{ session('success') }}</p>
                     </div>
                 </div>
@@ -59,7 +59,7 @@
 
 
                     <div class="flex-1">
-                        <h4 class="font-bold text-lg tracking-tight">{{ __('خطأ') }}</h4>
+                        <h4 class="font-bold text-lg tracking-tight">{{ __('components.toast.error') }}</h4>
                         <p class="mt-1 text-red-700 leading-relaxed">{{ session('error') }}</p>
                     </div>
                 </div>
@@ -94,7 +94,7 @@
                     </div>
 
                     <div class="flex-1">
-                        <h4 class="font-bold text-lg tracking-tight">{{ __('أخطاء في الإدخال') }}</h4>
+                        <h4 class="font-bold text-lg tracking-tight">{{ __('components.toast.input_errors') }}</h4>
                         <ul class="mt-2 space-y-1">
                             @foreach ($errors->all() as $error)
                                 <li class="flex items-start gap-2 text-red-700">

@@ -1,6 +1,6 @@
-@php($title = 'تأكيد كلمة المرور')
-@php($subtitle = 'لأمان حسابك نحتاج تأكيد كلمة المرور قبل المتابعة.')
-@php($cta = 'لن يتم استخدام البيانات إلا للتحقق من هويتك وحماية حسابك.')
+@php($title = __('main.confirm_password'))
+@php($subtitle = __('main.confirm_password.subtitle'))
+@php($cta = __('main.confirm_password.cta'))
 
 @extends('layouts.auth')
 
@@ -9,13 +9,13 @@
         @csrf
 
         <div class="form-group">
-            <label for="password" class="form-label">كلمة المرور</label>
-            <input id="password" name="password" type="password" required autocomplete="current-password"
-                   class="form-input" placeholder="••••••••">
+            <label for="password" class="form-label">{{ __('main.password') }}</label>
+            <input id="password" name="password" type="password" required autocomplete="current-password" class="form-input"
+                placeholder="••••••••">
         </div>
 
         <button type="submit" class="btn btn-primary auth-submit">
-            <span>تأكيد</span>
+            <span>{{ __('main.confirm') }}</span>
         </button>
     </form>
 @endsection

@@ -1,0 +1,23 @@
+{
+    "unpaid": "Ödenmemiş",
+    "paid": "Ödendi",
+    "overdue": "Vadesi Geçmiş",
+    "pending": "Beklemede",
+    "processing": "İşleniyor",
+    "cancelled": "İptal Edildi",
+    "refunded": "İade Edildi",
+    "completed": "Tamamlandı",
+
+    "admin": "Yönetici",
+    "user": "Kullanıcı",
+    "Administrator": "Yönetici",
+
+    "available": "Mevcut",
+    "finished": "Tükendi",
+    "discount": "İndirim",
+
+    "price_asc": "Fiyata Göre (Artan)",
+    "price_desc": "Fiyata Göre (Azalan)",
+    "newest": "En Yeni",
+    "oldest": "En Eski"
+}

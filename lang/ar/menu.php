@@ -2,19 +2,21 @@
 
 return [
     'preferences' => 'التفضيلات',
+    'country' => 'اختر الدولة',
+    'city' => 'اختر المدينة',
+
     'main' => 'الرئيسية',
     'dashboard' => 'لوحة التحكم',
 
-    'system' => 'إدارة النظام',
+    'system' => 'النظام',
     'users' => 'المستخدمين',
-    "user" => "المستخدم",
     'countries' => 'الدول',
     'cities' => 'المدن',
     'languages' => 'اللغات',
     'currencies' => 'العملات',
 
-    'catalog' => 'الكتالوج',
-    'categories' => 'التصنيفات',
+    'catalog' => 'المحتوى',
+    'categories' => 'الفئات',
     'products' => 'المنتجات',
 
     'sales' => 'المبيعات',
@@ -24,7 +26,6 @@ return [
     'financial' => 'المالية',
     'invoices' => 'الفواتير',
     'payment_providers' => 'مزودي الدفع',
-
-    'country' => 'الدولة',
-    'city' => 'المدينة',
+    'loading' => 'جاري التحميل...',
+    'error' => 'حدث خطأ',
 ];

@@ -1,6 +1,6 @@
-@php($title = 'التحقق بخطوتين')
-@php($subtitle = 'أدخل رمز المصادقة من التطبيق أو استخدم رمز الاسترداد الاحتياطي.')
-@php($cta = 'في حال فقدت الوصول للتطبيق يمكنك تسجيل الدخول باستخدام رموز الاسترداد.')
+@php($title = __('main.two_factor.challenge'))
+@php($subtitle = __('main.two_factor.challenge.subtitle'))
+@php($cta = __('main.two_factor.challenge.cta'))
 
 @extends('layouts.auth')
 
@@ -9,26 +9,26 @@
         @csrf
 
         <div class="form-group">
-            <label for="code" class="form-label">رمز المصادقة (6 أرقام)</label>
+            <label for="code" class="form-label">{{ __('main.two_factor.code') }}</label>
             <input id="code" name="code" type="text" inputmode="numeric" autocomplete="one-time-code"
-                   class="form-input" placeholder="123456">
+                class="form-input" placeholder="123456">
         </div>
 
         <div class="form-group">
-            <label for="recovery_code" class="form-label">رمز الاسترداد</label>
-            <input id="recovery_code" name="recovery_code" type="text" autocomplete="one-time-code"
-                   class="form-input" placeholder="XXXX-XXXX">
-            <p class="muted">استخدم رمز الاسترداد إذا تعذر الوصول إلى تطبيق المصادقة.</p>
+            <label for="recovery_code" class="form-label">{{ __('main.two_factor.recovery_code') }}</label>
+            <input id="recovery_code" name="recovery_code" type="text" autocomplete="one-time-code" class="form-input"
+                placeholder="XXXX-XXXX">
+            <p class="muted">{{ __('main.two_factor.recovery_code.description') }}</p>
         </div>
 
         <button type="submit" class="btn btn-primary auth-submit">
-            <span>تأكيد الدخول</span>
+            <span>{{ __('main.two_factor.challenge.button') }}</span>
         </button>
 
         <p class="auth-footer">
             <a href="{{ route('logout') }}"
-               onclick="event.preventDefault(); document.getElementById('logout-twofactor').submit();">
-                تسجيل الخروج والعودة للشاشة السابقة
+                onclick="event.preventDefault(); document.getElementById('logout-twofactor').submit();">
+                {{ __('main.two_factor.challenge.logout') }}
             </a>
         </p>
     </form>

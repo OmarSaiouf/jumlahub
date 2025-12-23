@@ -1,0 +1,56 @@
+<?php
+
+return [
+    'payment' => [
+        'title' => 'Complete Payment | JumlaHub',
+        'title_short' => 'Complete Payment',
+        'review_via' => 'Review your order then complete payment via :provider.',
+        'method_title' => 'Payment Method',
+        'secure' => 'Secure transaction',
+        'provider_label' => 'Provider',
+        'amount_due' => 'Amount Due',
+        'order_status' => 'Order Status',
+        'info_banner' => 'Please confirm the details before completing payment. You can return to the order page from the order details button.',
+        'steps_title' => 'Payment Steps',
+        'steps' => [
+            'check' => 'Confirm the order total and provider.',
+            'click' => 'Click the complete payment button to go to the gateway.',
+            'complete' => 'Finish the process then return to track the order.',
+        ],
+        'pay_now' => 'Pay Now',
+        'order_label' => 'Order #:id',
+    ],
+
+    'orders' => [
+        'title' => 'Orders',
+        'muted' => 'Recent activity on your wholesale orders',
+        'no_orders' => 'No orders found.',
+    ],
+
+    'product' => [
+        'title_template' => 'JumlaHub | :name',
+        'active_badge' => 'Active Listing',
+        'discount' => 'Discount',
+        'min_order_label' => 'Minimum Order',
+        'shipping_expected' => 'Estimated shipping: 5-7 business days.',
+        'about_title' => 'About this Product',
+        'description_fallback' => 'No description was added for this product yet. Contact us for details or check the specs above.',
+        'order_title' => 'Place Purchase Order',
+        'not_available' => 'This product is currently not available for ordering due to stock or listing status.',
+        'guest_note' => 'Please log in to submit a purchase order and confirm quantity.',
+        'quantity_label' => 'Requested Quantity',
+        'quantity_placeholder' => 'Enter requested quantity',
+        'status_open' => 'Available for Order',
+        'status_completed' => 'Order Completed',
+        'target_quantity' => 'Target Quantity',
+        'sold' => 'Sold',
+        'remaining' => 'Remaining',
+        'choose_provider' => 'Choose a payment provider',
+        'no_providers' => 'No payment methods available currently',
+        'order_total_label' => 'Estimated Order Total',
+        'secure_payment_note' => 'Secure payment — your details are encrypted.',
+        'send_order' => 'Send Order',
+        'view_orders' => 'View Orders',
+        'user_orders_count' => 'You have :count previous order(s) for this product.',
+    ],
+];

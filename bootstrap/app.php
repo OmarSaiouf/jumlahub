@@ -8,8 +8,8 @@ use App\Providers\FortifyServiceProvider;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
-        web: __DIR__.'/../routes/web.php',
-        commands: __DIR__.'/../routes/console.php',
+        web: __DIR__ . '/../routes/web.php',
+        commands: __DIR__ . '/../routes/console.php',
         health: '/up',
     )
     ->withProviders([
@@ -17,8 +17,8 @@ return Application::configure(basePath: dirname(__DIR__))
         FortifyServiceProvider::class,
     ])
     ->withMiddleware(function (Middleware $middleware): void {
-        $middleware->alias([
-            'setLocaleAndCurrency' => App\Core\Http\Middleware\SetLocaleAndCurrency::class,
+        $middleware->appendToGroup('web', [
+            App\Core\Http\Middleware\SetLocaleAndCurrency::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {

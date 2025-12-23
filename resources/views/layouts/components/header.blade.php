@@ -9,18 +9,18 @@
                     loading="lazy">
             </a>
             <nav class="nav-links">
-                <a href="{{ url('/') }}" class="{{ request()->is('/') ? 'active' : '' }}">الرئيسية</a>
-                <a href="{{ url('/#categories') }}">الفئات</a>
-                <a href="{{ url('/#products') }}">المنتجات</a>
+                <a href="{{ url('/') }}" class="{{ request()->is('/') ? 'active' : '' }}">{{ __('layout.header.home') }}</a>
+                    <a href="{{ url('/#categories') }}">{{ __('layout.header.categories') }}</a>
+                    <a href="{{ url('/#products') }}">{{ __('layout.header.products') }}</a>
                 @auth
-                    <a href="{{ url('/orders') }}" class="{{ request()->is('orders*') ? 'active' : '' }}">الطلبات</a>
+                        <a href="{{ url('/orders') }}" class="{{ request()->is('orders*') ? 'active' : '' }}">{{ __('layout.header.orders') }}</a>
                 @endauth
             </nav>
         </div>
 
         <form action="{{ url('/products') }}" method="GET" class="search">
             <input type="search" name="q" value="{{ request('q') }}"
-                placeholder="ابحث عن عروض أو منتجات بالجملة..." aria-label="بحث المنتجات">
+                placeholder="{{ __('layout.header.search_placeholder') }}" aria-label="{{ __('layout.header.search_aria') }}">
             <i class="fas fa-search"></i>
         </form>
 
@@ -29,26 +29,26 @@
                 @auth
                     <a href="{{ url('/dashboard') }}" class="btn btn-ghost">
                         <i class="fas fa-chart-line"></i>
-                        لوحة التحكم
+                        {{ __('layout.header.dashboard') }}
                     </a>
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
                         <button class="btn btn-primary" type="submit">
                             <i class="fas fa-arrow-right-from-bracket"></i>
-                            تسجيل الخروج
+                            {{ __('layout.header.logout') }}
                         </button>
                     </form>
                 @else
                     @if (Route::has('login'))
                         <a href="{{ route('login') }}" class="btn btn-ghost">
                             <i class="fas fa-right-to-bracket"></i>
-                            تسجيل الدخول
+                            {{ __('layout.header.login') }}
                         </a>
                     @endif
                     @if (Route::has('register'))
                         <a href="{{ route('register') }}" class="btn btn-secondary">
                             <i class="fas fa-user-plus"></i>
-                            حساب جديد
+                            {{ __('layout.header.register') }}
                         </a>
                     @endif
                 @endauth

@@ -11,43 +11,42 @@
 <div class="order-modal" id="{{ $modalId }}" role="dialog" aria-modal="true"
     aria-labelledby="{{ $modalId }}-title" aria-hidden="true">
     <div class="order-modal-card card">
-        <button type="button" class="modal-close" aria-label="إغلاق النافذة" data-modal-close>
+        <button type="button" class="modal-close" aria-label="{{ __('components.create_order.close') }}" data-modal-close>
             <i class="fas fa-xmark"></i>
         </button>
 
         <div class="modal-body">
-            <div class="modal-preview">
-                <div class="chip">{{ $product->category->name ?? 'منتج' }}</div>
+                <div class="modal-preview">
+                <div class="chip">{{ $product->category->name ?? __('components.product.default') }}</div>
                 <img src="{{ $product->image ?? asset('images/iconsProduct.png') }}" alt="{{ $product->name }}"
                     class="modal-image">
                 <h3 id="{{ $modalId }}-title">{{ $product->name }}</h3>
                 @if (!empty($product->description))
                     <p class="muted">{{ \Illuminate\Support\Str::limit($product->description, 120) }}</p>
                 @else
-                    <p class="muted">جهز طلبك وأضف ملاحظاتك الخاصة، وسيتم مراجعة التفاصيل مع فريق المبيعات فوراً.
-                    </p>
+                    <p class="muted">{{ __('components.create_order.description_fallback') }}</p>
                 @endif
 
                 <div class="price-row">
                     <span class="price-figure">{{ number_format($price, 2) }}</span>
-                    <span class="price-unit">/ {{ $product->unit ?? 'وحدة' }}</span>
+                    <span class="price-unit">/ {{ $product->unit ?? __('components.create_order.unit') }}</span>
                 </div>
 
                 <div class="modal-meta">
-                    <span><i class="fas fa-boxes-stacked"></i> المتاح الآن: {{ $available }}</span>
-                    <span><i class="fas fa-check-double"></i> تم بيع: {{ $sold }}</span>
-                    <span><i class="fas fa-clock"></i> جاهز للتجهيز والشحن</span>
+                    <span><i class="fas fa-boxes-stacked"></i> {{ __('components.create_order.available') }}: {{ $available }}</span>
+                    <span><i class="fas fa-check-double"></i> {{ __('components.create_order.sold') }}: {{ $sold }}</span>
+                    <span><i class="fas fa-clock"></i> {{ __('components.create_order.ready_to_ship') }}</span>
                 </div>
             </div>
 
             <div class="modal-form">
-                <div class="modal-headline">
+                    <div class="modal-headline">
                     <div class="eyebrow">
                         <i class="fas fa-clipboard-check"></i>
-                        تفاصيل الطلب
+                        {{ __('components.create_order.eyebrow') }}
                     </div>
-                    <h3>أدخل بياناتك لنبدأ تجهيز الشحنة</h3>
-                    <p class="muted">سنراجع الطلب ونقوم بتأكيده معك، مع اختيار وسيلة الدفع الأنسب لك.</p>
+                    <h3>{{ __('components.create_order.headline') }}</h3>
+                    <p class="muted">{{ __('components.create_order.muted') }}</p>
                 </div>
 
                 <form method="POST" action="{{ route('main.create.order') }}" class="order-form">
@@ -58,7 +57,7 @@
 
                     <div class="modal-grid">
                         <div class="form-group">
-                            <label class="form-label" for="{{ $modalId }}-quantity">الكمية المطلوبة</label>
+                            <label class="form-label" for="{{ $modalId }}-quantity">{{ __('components.create_order.quantity_label') }}</label>
                             <input id="{{ $modalId }}-quantity" type="number" name="quantity" class="form-input"
                                 min="1"
                                 @if ($canOrder) max="{{ $available }}"
@@ -68,13 +67,13 @@
                                         value="0"
                                         disabled @endif
                                 data-field="quantity" inputmode="numeric">
-                            <div class="help-text">سيتم تحديث إجمالي الطلب تلقائياً.</div>
+                            <div class="help-text">{{ __('components.create_order.help_text') }}</div>
                         </div>
 
                         <div class="form-group">
-                            <label class="form-label" for="{{ $modalId }}-payment">طريقة الدفع المفضلة</label>
+                            <label class="form-label" for="{{ $modalId }}-payment">{{ __('components.create_order.payment_label') }}</label>
                             <select id="{{ $modalId }}-payment" name="payment_provider_id" class="form-input">
-                                <option value="">اختر وسيلة الدفع</option>
+                                    <option value="">{{ __('components.create_order.choose_payment') }}</option>
                                 @foreach ($paymentProviders->cursor() as $item)
                                     <option value="{{ $item['id'] }}">{{ $item['name'] }}</option>
                                 @endforeach
@@ -83,36 +82,36 @@
                     </div>
 
                     {{-- <div class="form-group">
-                        <label class="form-label" for="{{ $modalId }}-notes">ملاحظات خاصة</label>
+                        <label class="form-label" for="{{ $modalId }}-notes">{{ __('components.create_order.notes_label') }}</label>
                         <textarea id="{{ $modalId }}-notes" name="notes" class="form-input" rows="3"
-                            placeholder="أخبرنا بتفاصيل الاستلام أو الشحن أو أي متطلبات خاصة"></textarea>
+                            placeholder="{{ __('components.create_order.notes_placeholder') }}"></textarea>
                     </div> --}}
 
                     @unless ($canOrder)
                         <div class="alert" style="margin-top: 0;">
                             <i class="fas fa-circle-exclamation"></i>
-                            الكمية غير متوفرة حالياً، سنخبرك بمجرد إعادة التوريد.
+                            {{ __('components.create_order.out_of_stock') }}
                         </div>
                     @endunless
 
                     <div class="order-total">
                         <div>
-                            <span class="muted">إجمالي تقديري</span>
+                            <span class="muted">{{ __('components.create_order.estimate_total') }}</span>
                             <div class="total-number" data-amount-preview>
                                 {{ number_format($canOrder ? $price : 0, 2) }}
                             </div>
                         </div>
                         <div class="pill">
                             <i class="fas fa-shield-check"></i>
-                            الأسعار تشمل الدعم حتى التسليم
+                            {{ __('components.create_order.prices_include') }}
                         </div>
                     </div>
 
                     <div class="modal-actions">
-                        <button type="button" class="btn btn-ghost" data-modal-close>إلغاء</button>
+                        <button type="button" class="btn btn-ghost" data-modal-close>{{ __('components.create_order.cancel') }}</button>
                         <button type="submit" class="btn btn-primary" {{ $canOrder ? '' : 'disabled' }}>
                             <i class="fas fa-paper-plane"></i>
-                            تأكيد الطلب
+                            {{ __('components.create_order.confirm') }}
                         </button>
                     </div>
                 </form>

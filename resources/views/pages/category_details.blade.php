@@ -1,6 +1,6 @@
 @extends('layouts.site')
 
-@section('title', 'JumlaHub | ' . ($category->name ?? 'تفاصيل الفئة'))
+@section('title', __('components.category_details.title', ['name' => $category->name ?? __('components.product.default')]))
 
 @section('content')
 
@@ -37,20 +37,17 @@
 
                         {{-- Meta --}}
                         <div class="mt-5 flex flex-wrap items-center gap-3 justify-end">
-                            <span
-                                class="inline-flex items-center gap-2 rounded-full bg-teal-50 px-8 py-2 text-sm font-medium text-teal-700 ring-1 ring-teal-100">
-                                <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M20 13V7a2 2 0 00-2-2H6a2 2 0 00-2 2v6m16 0v4a2 2 0 01-2 2H6a2 2 0 01-2-2v-4m16 0H4" />
+                            <span class="inline-flex items-center gap-2 rounded-full bg-teal-50 px-8 py-2 text-sm font-medium text-teal-700 ring-1 ring-teal-100">
+                                <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M20 13V7a2 2 0 00-2-2H6a2 2 0 00-2 2v6m16 0v4a2 2 0 01-2 2H6a2 2 0 01-2-2v-4m16 0H4" />
                                 </svg>
-                                {{ $products->count() }} منتج
+                                {{ __('components.category_details.products_count', ['count' => $products->count()]) }}
                             </span>
 
                             <a href="{{ url('/orders') }}"
                                 class="inline-flex items-center gap-2  rounded-full bg-slate-900 px-5 py-2 text-sm font-semibold text-white transition hover:bg-slate-800">
                                 <i class="fas fa-receipt"></i>
-                                إدارة طلباتي
+                                {{ __('components.category_details.manage_orders') }}
                             </a>
 
                         </div>
@@ -68,13 +65,13 @@
 
                 <div class="text-right">
                     <span class="text-sm font-semibold text-teal-600">
-                        عروض مختارة
+                        {{ __('components.category_details.selected_offers') }}
                     </span>
                     <h2 class="mt-2 text-2xl font-bold text-slate-900">
-                        منتجات جاهزة للطلب بالجملة
+                        {{ __('components.category_details.products_ready') }}
                     </h2>
                     <p class="mt-2 max-w-xl text-slate-600">
-                        اختيارات تم فحصها لضمان الجودة وسهولة الشحن إلى متجرك.
+                        {{ __('components.category_details.muted') }}
                     </p>
                 </div>
 
@@ -102,10 +99,10 @@
                     class="flex flex-col items-center justify-center rounded-3xl border border-dashed border-slate-200 bg-slate-50 py-20 text-center">
                     <img src="{{ asset('images/empty-box.png') }}" class="h-24 w-24 opacity-60" alt="">
                     <h3 class="mt-6 text-lg font-semibold text-slate-800">
-                        لا توجد منتجات حالياً
+                        {{ __('components.category_details.no_products') }}
                     </h3>
                     <p class="mt-2 text-slate-500">
-                        سيتم إضافة منتجات لهذه الفئة قريباً
+                        {{ __('components.category_details.coming_soon') }}
                     </p>
                 </div>
             @endif

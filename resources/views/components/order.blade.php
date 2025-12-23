@@ -2,11 +2,11 @@
     use App\Core\Enums\OrderStatus;
 
     $statusLabels = [
-        OrderStatus::PENDING->getValue() => 'الطلب بالطريق',
-        OrderStatus::PROCESSING->getValue() => 'بانتظار الدفع',
-        OrderStatus::COMPLETED->getValue() => 'تم التسليم',
-        OrderStatus::CANCELLED->getValue() => 'تم الإلغاء',
-        OrderStatus::REFUNDED->getValue() => 'تم الاسترداد',
+        OrderStatus::PENDING->getValue() => __('components.order.status.pending'),
+        OrderStatus::PROCESSING->getValue() => __('components.order.status.processing'),
+        OrderStatus::COMPLETED->getValue() => __('components.order.status.completed'),
+        OrderStatus::CANCELLED->getValue() => __('components.order.status.cancelled'),
+        OrderStatus::REFUNDED->getValue() => __('components.order.status.refunded'),
     ];
 
     $statusClasses = [
@@ -34,16 +34,16 @@
     ];
 
     $copy = [
-        'quantity' => 'الكمية:',
-        'amount' => 'قيمة الطلب:',
-        'date' => 'تاريخ الطلب:',
-        'pendingTitle' => 'طلبك بالطريق',
-        'pendingText' => 'نجهز الشحنة الآن وسيتم إعلامك فور انطلاقها.',
+        'quantity' => __('components.order.copy.quantity'),
+        'amount' => __('components.order.copy.amount'),
+        'date' => __('components.order.copy.date'),
+        'pendingTitle' => __('components.order.copy.pendingTitle'),
+        'pendingText' => __('components.order.copy.pendingText'),
         'processingTitle' => $statusLabels[OrderStatus::PROCESSING->getValue()],
-        'processingText' => 'لم يتم دفع قيمة الطلب بعد. يرجى إتمام الدفع ليتم إرسال الطلب.',
-        'defaultTitle' => 'حالة الطلب الحالية',
-        'cta' => 'تكملة الخطوات',
-        'details' => 'تفاصيل الطلب',
+        'processingText' => __('components.order.copy.processingText'),
+        'defaultTitle' => __('components.order.copy.defaultTitle'),
+        'cta' => __('components.order.copy.cta'),
+        'details' => __('components.order.copy.details'),
     ];
 
     $status = $order->status;

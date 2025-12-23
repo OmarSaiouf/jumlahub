@@ -11,7 +11,6 @@ use App\Core\Models\City;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware('setLocaleAndCurrency')->group(function () {
 
     //------------
     //  home
@@ -73,5 +72,3 @@ Route::middleware('setLocaleAndCurrency')->group(function () {
     Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('/dashboard', DashboardController::class)->name('dashboard');
     });
-
-});

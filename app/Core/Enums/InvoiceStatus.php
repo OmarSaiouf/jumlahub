@@ -28,7 +28,7 @@ enum InvoiceStatus: string
     {
         return array_combine(
             array_map(fn($case) => $case->getValue(), self::cases()),
-            array_map(fn($case) => ucfirst($case->getValue()), self::cases())
+            array_map(fn($case) => __($case->getValue()), self::cases())
         );
     }
 }

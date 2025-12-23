@@ -2,10 +2,13 @@
 
 return [
     'preferences' => 'Preferences',
+    'country' => 'Select country',
+    'city' => 'Select city',
+
     'main' => 'Main',
     'dashboard' => 'Dashboard',
 
-    'system' => 'System Management',
+    'system' => 'System',
     'users' => 'Users',
     'countries' => 'Countries',
     'cities' => 'Cities',
@@ -22,8 +25,7 @@ return [
 
     'financial' => 'Financial',
     'invoices' => 'Invoices',
-    'payment_providers' => 'Payment Providers',
-
-    'country' => 'Country',
-    'city' => 'City',
+    'payment_providers' => 'Payment providers',
+    'loading' => 'Loading...',
+    'error' => 'An error occurred',
 ];

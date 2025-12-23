@@ -41,7 +41,7 @@
 
 
     {{-- نسخ الرابط --}}
-    <span class="tooltip9" onclick="copyProductLink('{{ $productUrl }}')" title="نسخ الرابط" style="cursor:pointer">
+    <span class="tooltip9" onclick="copyProductLink('{{ $productUrl }}')" title="{{ __('components.share.copy_title') }}" style="cursor:pointer">
         <i class="fa-solid fa-copy fa-lg" style="color: #0f766e;"></i>
     </span>
 
@@ -50,7 +50,7 @@
 <script>
     function copyProductLink(url) {
         navigator.clipboard.writeText(url).then(() => {
-            alert('تم نسخ رابط المنتج ✅');
+            alert('{{ __('components.share.copied_alert') }}');
         });
     }
 </script>

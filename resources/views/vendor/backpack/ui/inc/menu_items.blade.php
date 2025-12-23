@@ -125,17 +125,17 @@
         const countryId = this.value;
         const citySelect = document.getElementById("city_id");
 
-        citySelect.innerHTML = '<option value="">جاري التحميل...</option>';
+        citySelect.innerHTML = '<option value="">' + "{{ __('menu.loading') }}" + '</option>';
 
         if (!countryId) {
-            citySelect.innerHTML = '<option value="">اختر المدينة</option>';
+            citySelect.innerHTML = '<option value="">' + "{{ __('menu.city') }}" + '</option>';
             return;
         }
 
         fetch(`/countries/${countryId}/cities`)
             .then((response) => response.json())
             .then((cities) => {
-                citySelect.innerHTML = '<option value="">اختر المدينة</option>';
+                citySelect.innerHTML = '<option value="">' + "{{ __('menu.city') }}" + '</option>';
 
                 cities.forEach((city) => {
                     const option = document.createElement("option");
@@ -145,7 +145,7 @@
                 });
             })
             .catch(() => {
-                citySelect.innerHTML = '<option value="">حدث خطأ</option>';
+                citySelect.innerHTML = '<option value="">' + "{{ __('menu.error') }}" + '</option>';
             });
 
         citySelect.submit();
@@ -160,7 +160,7 @@
                 .then((res) => res.json())
                 .then((cities) => {
                     const citySelect = document.getElementById("city_id");
-                    citySelect.innerHTML = '<option value="">اختر المدينة</option>';
+                        citySelect.innerHTML = '<option value="">' + "{{ __('menu.city') }}" + '</option>';
 
                     cities.forEach((city) => {
                         const option = document.createElement("option");

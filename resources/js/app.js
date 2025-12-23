@@ -11,18 +11,18 @@ document.addEventListener("DOMContentLoaded", function () {
         countrySelect.addEventListener("change", function () {
             const countryId = this.value;
 
-            citySelect.innerHTML = '<option value="">جاري التحميل...</option>';
+            const t = window.JH_TRANSLATIONS?.menu || {};
+            citySelect.innerHTML = `<option value="">${t.loading || 'Loading...'}</option>`;
 
             if (!countryId) {
-                citySelect.innerHTML = '<option value="">اختر المدينة</option>';
+                citySelect.innerHTML = `<option value="">${t.city_placeholder || 'Select city'}</option>`;
                 return;
             }
 
             fetch(`/countries/${countryId}/cities`)
                 .then((res) => res.json())
                 .then((cities) => {
-                    citySelect.innerHTML =
-                        '<option value="">اختر المدينة</option>';
+                    citySelect.innerHTML = `<option value="">${t.city_placeholder || 'Select city'}</option>`;
 
                     cities.forEach((city) => {
                         const option = document.createElement("option");
@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     });
                 })
                 .catch(() => {
-                    citySelect.innerHTML = '<option value="">حدث خطأ</option>';
+                    citySelect.innerHTML = `<option value="">${t.error || 'An error occurred'}</option>`;
                 });
         });
     }

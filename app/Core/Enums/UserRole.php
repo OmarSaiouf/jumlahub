@@ -23,7 +23,7 @@ enum UserRole: string
     public static function labels(): array
     {
         return [
-            self::ADMIN->value => 'Administrator',
+            self::ADMIN->value => __('Administrator'),
             self::USER->value => 'User',
         ];
     }
@@ -37,7 +37,7 @@ enum UserRole: string
     {
         return array_combine(
             array_map(fn($case) => $case->getValue(), self::cases()),
-            array_map(fn($case) => ucfirst($case->getValue()), self::cases())
+            array_map(fn($case) => __($case->getValue()), self::cases())
         );
     }
 }
